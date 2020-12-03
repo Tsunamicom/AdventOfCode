@@ -13,8 +13,10 @@ namespace AdventOfCode
         {
             var challenges = new List<IChallenge>()
             {
-                new Challenge(new LocalFileAccess(".\\Files\\Day1.txt"), new Challenge_2020_01_01(), true), // Challenge Day 1, Part 1
-                new Challenge(new LocalFileAccess(".\\Files\\Day1.txt"), new Challenge_2020_01_02(), true)  // Challenge Day 1, Part 2
+                new Challenge(new LocalFileAccess(".\\Files\\Day1.txt"), new Challenge_2020_01_01(), true),  // Challenge Day 1, Part 1
+                new Challenge(new LocalFileAccess(".\\Files\\Day1.txt"), new Challenge_2020_01_02(), true),  // Challenge Day 1, Part 2
+                new Challenge(new LocalFileAccess(".\\Files\\Day2.txt"), new Challenge_2020_02_01(), true),  // Challenge Day 2, Part 1
+                new Challenge(new LocalFileAccess(".\\Files\\Day2.txt"), new Challenge_2020_02_02(), true),  // Challenge Day 2, Part 2
             };
 
             var resolver = new ChallengeResolver(challenges);
