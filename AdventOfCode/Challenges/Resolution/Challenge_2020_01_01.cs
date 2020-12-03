@@ -16,10 +16,12 @@ namespace AdventOfCode.Challenges.Resolution
             var result = await Task.Run(() =>
                 ints.SelectMany(i => ints, (i, j) => new { i, j })
                     .Where(t => t.i + t.j == 2020)
-                    .Select(t => t.i * t.j).First()
+                    .Select(t => t.i * t.j)
                 ).ConfigureAwait(false);
 
-            return result.ToString();
+            if (!result.Any()) return "No Solution Found.";
+
+            return result.First().ToString();
         }
     }
 }
