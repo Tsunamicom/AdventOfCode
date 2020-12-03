@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace AdventOfCode.Challenges.Resolution
@@ -20,25 +18,20 @@ namespace AdventOfCode.Challenges.Resolution
                 {
                     var splitPass = password.Replace(":", null).Split(' ');
 
-                    var positions = splitPass[0].Split('-');
-                    var firstPosIdx = int.Parse(positions[0]) - 1;
-                    var secondPosIdx = int.Parse(positions[1]) - 1;
+                    var positions = splitPass[0].Split('-').Select(int.Parse);
+                    var firstPosIdx = positions.First() - 1;
+                    var secondPosIdx = positions.Last() - 1;
 
                     var targetChar = char.Parse(splitPass[1]);
 
-                    var focusCount = $"{splitPass[2][firstPosIdx]}{splitPass[2][secondPosIdx]}"
-                        .ToList()
+                    var focusCount = new List<char>() { splitPass[2][firstPosIdx], splitPass[2][secondPosIdx] }
                         .Count(c => c == targetChar) == 1;
 
                     if (focusCount) count++;
                 }
             }).ConfigureAwait(false);
 
-            
-
             return count.ToString();
         }
-
-        
     }
 }
