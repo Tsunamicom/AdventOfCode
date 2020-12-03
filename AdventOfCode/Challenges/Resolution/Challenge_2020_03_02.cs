@@ -14,7 +14,7 @@ namespace AdventOfCode.Challenges.Resolution
         {
             var sectionLen = data.First().Length;
 
-            long multipliedTrees = -1;
+            long multipliedTrees = 1;
 
             // <horizontalSpeed, downHillSpeed>
             var slopes = new List<Tuple<int, int>>() {
@@ -41,13 +41,9 @@ namespace AdventOfCode.Challenges.Resolution
                         {
                             ++treeCount;
                         }
-                    }
+                    }   
 
-                    // Discover the first tree multiplier or multiply upon the existing value
-                    if (multipliedTrees == -1)
-                        multipliedTrees = treeCount;
-                    else
-                        multipliedTrees *= treeCount;
+                    multipliedTrees *= treeCount;
                 }
             }).ConfigureAwait(false);
 
