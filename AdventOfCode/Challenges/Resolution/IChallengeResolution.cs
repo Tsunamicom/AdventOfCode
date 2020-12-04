@@ -8,6 +8,6 @@ namespace AdventOfCode.Challenges.Resolution
         int ChallengeDay { get; }
         int ChallengePart { get; }
 
-        Task<string> ResolveChallenge(List<string> data);
+        string ResolveChallenge(List<string> data);
     }
 }

@@ -11,35 +11,31 @@ namespace AdventOfCode.Challenges.Resolution
         public int ChallengeDay => 4;
         public int ChallengePart => 2;
 
-        public async Task<string> ResolveChallenge(List<string> data)
+        public string ResolveChallenge(List<string> data)
         {
             var validPassports = 0;
             data.Add(string.Empty); // Add a new line at end to facilitate passport detection
 
-            var validatedFields = new List<string>() { "byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid"};
+            var validatedFields = new List<string>() { "byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid" };
 
-            await Task.Run(() => 
+            var currentPassPort = new Dictionary<string, string>();
+            foreach (var passportLine in data)
             {
-                var currentPassPort = new Dictionary<string, string>();
-                foreach (var passportLine in data)
+                if (string.IsNullOrEmpty(passportLine))
                 {
-                    if (string.IsNullOrEmpty(passportLine))
+                    if (IsCurrentPassPortValid(validatedFields, currentPassPort))
                     {
-                        if (IsCurrentPassPortValid(validatedFields, currentPassPort))
-                        {
-                            validPassports++;
-                        }
-                        currentPassPort = new Dictionary<string, string>();
+                        validPassports++;
                     }
-                    else
-                    {
-                        passportLine.Split(' ').Select(f => f.Split(':')).ToList()
-                            .ForEach(kvp => currentPassPort.Add(kvp[0], kvp[1]));
-                    }
+                    currentPassPort = new Dictionary<string, string>();
                 }
-            }).ConfigureAwait(false);
-            
-            
+                else
+                {
+                    passportLine.Split(' ').Select(f => f.Split(':')).ToList()
+                        .ForEach(kvp => currentPassPort.Add(kvp[0], kvp[1]));
+                }
+            }
+
             return validPassports.ToString();
         }
 
@@ -50,7 +46,7 @@ namespace AdventOfCode.Challenges.Resolution
         {
             try
             {
-                if (validatedFields.Intersect(passport.Keys).Count() == validatedFields.Count())
+                if (validatedFields.All(f => passport.Keys.Contains(f)))
                 {
                     var isValid =
                         IsValidYearValue(passport["byr"], 1920, 2002) &&

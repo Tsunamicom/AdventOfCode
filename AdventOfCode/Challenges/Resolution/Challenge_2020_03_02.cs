@@ -10,7 +10,7 @@ namespace AdventOfCode.Challenges.Resolution
         public int ChallengeDay => 3;
         public int ChallengePart => 2;
 
-        public async Task<string> ResolveChallenge(List<string> data)
+        public string ResolveChallenge(List<string> data)
         {
             var sectionLen = data.First().Length;
 
@@ -25,27 +25,24 @@ namespace AdventOfCode.Challenges.Resolution
                 new Tuple<int, int>(1, 2)
             };
 
-            await Task.Run(() => 
+            foreach (var slope in slopes)
             {
-                foreach (var slope in slopes)
+                var horizontalPos = 0;
+                var treeCount = 0;
+
+                for (int i = slope.Item2; i < data.Count; i += slope.Item2)
                 {
-                    var horizontalPos = 0;
-                    var treeCount = 0;
+                    horizontalPos += slope.Item1;
+                    horizontalPos %= sectionLen;
 
-                    for (int i = slope.Item2; i < data.Count; i += slope.Item2)
+                    if (data[i][horizontalPos] == '#')
                     {
-                        horizontalPos += slope.Item1;
-                        horizontalPos %= sectionLen;
-
-                        if (data[i][horizontalPos] == '#')
-                        {
-                            ++treeCount;
-                        }
-                    }   
-
-                    multipliedTrees *= treeCount;
+                        ++treeCount;
+                    }
                 }
-            }).ConfigureAwait(false);
+
+                multipliedTrees *= treeCount;
+            }
 
             return multipliedTrees.ToString();
         }

@@ -40,7 +40,7 @@ namespace AdventOfCode.Challenges
 
                 var data = await _dataSource.GetTestFileDetails().ConfigureAwait(false);
 
-                result.Result = await _resolution.ResolveChallenge(data).ConfigureAwait(false);
+                result.Result = _resolution.ResolveChallenge(data);
             }
             catch (Exception ex)
             {
