@@ -11,6 +11,8 @@ namespace AdventOfCode.Challenges.Resolution
         public int ChallengeDay => 4;
         public int ChallengePart => 2;
 
+        readonly static Regex _hairColorRegPattern = new Regex(@"^#[0-9a-f]{6}$");
+
         public string ResolveChallenge(List<string> data)
         {
             var validPassports = 0;
@@ -23,7 +25,7 @@ namespace AdventOfCode.Challenges.Resolution
             {
                 if (string.IsNullOrEmpty(passportLine))
                 {
-                    if (IsCurrentPassPortValid(validatedFields, currentPassPort))
+                    if (IsCurrentPassportValid(validatedFields, currentPassPort))
                     {
                         validPassports++;
                     }
@@ -42,7 +44,7 @@ namespace AdventOfCode.Challenges.Resolution
         /// <summary>
         /// Evaluates the current passport to determine whether it meets the validation criteria
         /// </summary>
-        private bool IsCurrentPassPortValid(List<string> validatedFields, Dictionary<string, string> passport)
+        private bool IsCurrentPassportValid(List<string> validatedFields, Dictionary<string, string> passport)
         {
             try
             {
@@ -114,7 +116,7 @@ namespace AdventOfCode.Challenges.Resolution
         /// </summary>
         private bool IsValidHairColorValue(string val)
         {
-            return Regex.IsMatch(val, "^#[0-9a-f]{6}$");
+            return _hairColorRegPattern.IsMatch(val);
         }
 
         /// <summary>

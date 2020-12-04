@@ -21,7 +21,7 @@ namespace AdventOfCode.Challenges.Resolution
             {
                 if (string.IsNullOrEmpty(passportLine))
                 {
-                    if (IsCurrentPassPortValid(validatedFields, currentPassPort))
+                    if (IsCurrentPassportValid(validatedFields, currentPassPort))
                     {
                         validPassports++;
                     }
@@ -40,7 +40,7 @@ namespace AdventOfCode.Challenges.Resolution
         /// <summary>
         /// Evaluates the current passport to determine whether it meets the validation criteria
         /// </summary>
-        private bool IsCurrentPassPortValid(List<string> validatedFields, Dictionary<string, string> passport)
+        private bool IsCurrentPassportValid(List<string> validatedFields, Dictionary<string, string> passport)
         {
             return validatedFields.All(f => passport.Keys.Contains(f));
         }
