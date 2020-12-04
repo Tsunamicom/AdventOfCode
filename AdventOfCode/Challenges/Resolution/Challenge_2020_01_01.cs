@@ -9,15 +9,14 @@ namespace AdventOfCode.Challenges.Resolution
         public int ChallengeDay => 1;
         public int ChallengePart => 1;
 
-        public async Task<string> ResolveChallenge(List<string> data)
+        public string ResolveChallenge(List<string> data)
         {
             var ints = data.Select(int.Parse);
 
-            var result = await Task.Run(() =>
+            var result =
                 ints.SelectMany(i => ints, (i, j) => new { i, j })
                     .Where(t => t.i + t.j == 2020)
-                    .Select(t => t.i * t.j)
-                ).ConfigureAwait(false);
+                    .Select(t => t.i * t.j);
 
             if (!result.Any()) return "No Solution Found.";
 

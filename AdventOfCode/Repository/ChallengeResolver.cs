@@ -17,7 +17,7 @@ namespace AdventOfCode.Repository
 
         public async Task<List<ChallengeResult>> GetChallengeResults()
         {
-            var challengeTasks = _challenges.Select(c => Task.Run(() => c.Resolve()));
+            var challengeTasks = _challenges.Select(c => c.Resolve());
 
             var results = await Task.WhenAll(challengeTasks).ConfigureAwait(false);
 
