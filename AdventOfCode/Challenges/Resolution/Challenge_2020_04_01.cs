@@ -42,7 +42,7 @@ namespace AdventOfCode.Challenges.Resolution
         /// </summary>
         private bool IsCurrentPassPortValid(List<string> validatedFields, Dictionary<string, string> passport)
         {
-            return validatedFields.Intersect(passport.Keys).Count() == validatedFields.Count();
+            return validatedFields.All(f => passport.Keys.Contains(f));
         }
     }
 }

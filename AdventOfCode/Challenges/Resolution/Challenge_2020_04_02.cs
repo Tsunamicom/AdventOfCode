@@ -46,7 +46,7 @@ namespace AdventOfCode.Challenges.Resolution
         {
             try
             {
-                if (validatedFields.Intersect(passport.Keys).Count() == validatedFields.Count())
+                if (validatedFields.All(f => passport.Keys.Contains(f)))
                 {
                     var isValid =
                         IsValidYearValue(passport["byr"], 1920, 2002) &&
