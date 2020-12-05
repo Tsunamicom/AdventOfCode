@@ -14,14 +14,16 @@ namespace AdventOfCode
         {
             var challenges = new Dictionary<string, IChallenge>()
             {
-                {"1-1", new Challenge(new LocalFileAccess(".\\Files\\Day1.txt"), new Challenge_2020_01_01(), true) },  // Challenge Day 1, Part 1
-                {"1-2", new Challenge(new LocalFileAccess(".\\Files\\Day1.txt"), new Challenge_2020_01_02(), true) },  // Challenge Day 1, Part 2
-                {"2-1", new Challenge(new LocalFileAccess(".\\Files\\Day2.txt"), new Challenge_2020_02_01(), true) },  // Challenge Day 2, Part 1
-                {"2-2", new Challenge(new LocalFileAccess(".\\Files\\Day2.txt"), new Challenge_2020_02_02(), true) },  // Challenge Day 2, Part 2
-                {"3-1", new Challenge(new LocalFileAccess(".\\Files\\Day3.txt"), new Challenge_2020_03_01(), true) },  // Challenge Day 3, Part 1
-                {"3-2", new Challenge(new LocalFileAccess(".\\Files\\Day3.txt"), new Challenge_2020_03_02(), true) },  // Challenge Day 3, Part 2
-                {"4-1", new Challenge(new LocalFileAccess(".\\Files\\Day4.txt"), new Challenge_2020_04_01(), true) },  // Challenge Day 4, Part 1
-                {"4-2", new Challenge(new LocalFileAccess(".\\Files\\Day4.txt"), new Challenge_2020_04_02(), true) },  // Challenge Day 4, Part 2
+                {"1-1", new Challenge(new LocalFileAccess(".\\Files\\Day1.txt"), new Challenge_2020_01_01(), true) },
+                {"1-2", new Challenge(new LocalFileAccess(".\\Files\\Day1.txt"), new Challenge_2020_01_02(), true) },
+                {"2-1", new Challenge(new LocalFileAccess(".\\Files\\Day2.txt"), new Challenge_2020_02_01(), true) },
+                {"2-2", new Challenge(new LocalFileAccess(".\\Files\\Day2.txt"), new Challenge_2020_02_02(), true) },
+                {"3-1", new Challenge(new LocalFileAccess(".\\Files\\Day3.txt"), new Challenge_2020_03_01(), true) },
+                {"3-2", new Challenge(new LocalFileAccess(".\\Files\\Day3.txt"), new Challenge_2020_03_02(), true) },
+                {"4-1", new Challenge(new LocalFileAccess(".\\Files\\Day4.txt"), new Challenge_2020_04_01(), true) },
+                {"4-2", new Challenge(new LocalFileAccess(".\\Files\\Day4.txt"), new Challenge_2020_04_02(), true) },
+                {"5-1", new Challenge(new LocalFileAccess(".\\Files\\Day5.txt"), new Challenge_2020_05_01(), true) },
+                {"5-2", new Challenge(new LocalFileAccess(".\\Files\\Day5.txt"), new Challenge_2020_05_02(), true) },
             };
 
             // Allow for selection via console for specific or array of tests to run

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
-using AdventOfCode.Challenges.Resolution;
+﻿using AdventOfCode.Challenges.Resolution;
 using AdventOfCode.DataAccess;
 using AdventOfCode.Models;
+using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace AdventOfCode.Challenges
 {
@@ -23,7 +23,8 @@ namespace AdventOfCode.Challenges
         public async Task<ChallengeResult> Resolve()
         {
 
-            var result = new ChallengeResult() {
+            var result = new ChallengeResult()
+            {
                 ChallengeDay = _resolution.ChallengeDay,
                 ChallengePart = _resolution.ChallengePart
             };
