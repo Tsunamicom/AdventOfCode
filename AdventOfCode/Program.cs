@@ -43,7 +43,7 @@ namespace AdventOfCode
                 Console.WriteLine($"HasError: {result.HasError}");
                 Console.WriteLine($"Resolve Time (ms): {result.ResolveTime}");
                 Console.WriteLine($"Result: {result.Result}");
-                Console.WriteLine("=========================================================");
+                Console.WriteLine("==========================================================");
                 Console.WriteLine("");
             }
         }
