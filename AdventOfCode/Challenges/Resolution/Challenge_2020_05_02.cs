@@ -20,7 +20,11 @@ namespace AdventOfCode.Challenges.Resolution
 
             for (int i = 0; i < 1024; i++)
             {
-                if (!seats.Contains(i) && seats.Contains(i - 1) && seats.Contains(i + 1)) mySeat = i;
+                if (!seats.Contains(i) && seats.Contains(i - 1) && seats.Contains(i + 1))
+                {
+                    mySeat = i;
+                    break;
+                } 
             }
 
             return mySeat.ToString();
