@@ -24,6 +24,8 @@ namespace AdventOfCode
                 {"4-2", new Challenge(new LocalFileAccess(".\\Files\\Day4.txt"), new Challenge_2020_04_02(), true) },
                 {"5-1", new Challenge(new LocalFileAccess(".\\Files\\Day5.txt"), new Challenge_2020_05_01(), true) },
                 {"5-2", new Challenge(new LocalFileAccess(".\\Files\\Day5.txt"), new Challenge_2020_05_02(), true) },
+                {"6-1", new Challenge(new LocalFileAccess(".\\Files\\Day6.txt"), new Challenge_2020_06_01(), true) },
+                {"6-2", new Challenge(new LocalFileAccess(".\\Files\\Day6.txt"), new Challenge_2020_06_02(), true) },
             };
 
             // Allow for selection via console for specific or array of tests to run
