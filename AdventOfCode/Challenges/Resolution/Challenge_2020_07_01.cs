@@ -43,6 +43,9 @@ namespace AdventOfCode.Challenges.Resolution
             return bagCount.ToString();
         }
 
+        /// <summary>
+        /// Gets a collection of unique bags inside the target bag
+        /// </summary>
         public HashSet<string> RummageThroughBags(Dictionary<string, HashSet<string>> bags, HashSet<string> seenBags, string target)
         {
             var checkedTargets = bags

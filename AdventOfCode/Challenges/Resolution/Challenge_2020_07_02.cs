@@ -20,7 +20,7 @@ namespace AdventOfCode.Challenges.Resolution
         }
 
         /// <summary>
-        /// Parses the rule set and returns a 
+        /// Parses the rule set
         /// </summary>
         public Dictionary<string, List<Tuple<string, int>>> GetParsedRules(List<string> rulesData)
         {
@@ -65,6 +65,9 @@ namespace AdventOfCode.Challenges.Resolution
             return bagColorRules;
         }
 
+        /// <summary>
+        /// Counts the nested bags of the target bag
+        /// </summary>
         public int GetContainedBagCount(Dictionary<string, List<Tuple<string, int>>> containedBags, string targetBag)
         {
             if (!containedBags.ContainsKey(targetBag))
