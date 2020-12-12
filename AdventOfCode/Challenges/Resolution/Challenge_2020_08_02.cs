@@ -18,9 +18,8 @@ namespace AdventOfCode.Challenges.Resolution
                 var currentIdx = 0;
                 var isFlipped = false;
 
-                while (true)
+                while (!idxSeen.Contains(currentIdx))
                 {
-                    if (idxSeen.Contains(currentIdx)) break;
                     idxSeen.Add(currentIdx);
 
                     var commandSet = data[currentIdx].Split(' ');
