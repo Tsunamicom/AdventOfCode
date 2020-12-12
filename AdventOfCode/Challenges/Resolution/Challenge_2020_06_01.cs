@@ -13,7 +13,7 @@ namespace AdventOfCode.Challenges.Resolution
 
             var answerSum = 0;
             var currentGroupAnswers = new HashSet<char>();
-            
+
             foreach (var answers in data)
             {
                 if (string.IsNullOrEmpty(answers))

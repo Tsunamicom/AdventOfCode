@@ -24,7 +24,7 @@ namespace AdventOfCode.Challenges.Resolution
                 {
                     mySeat = i;
                     break;
-                } 
+                }
             }
 
             return mySeat.ToString();
