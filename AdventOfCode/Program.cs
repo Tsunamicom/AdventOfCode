@@ -30,6 +30,8 @@ namespace AdventOfCode
                 {"7-2", new Challenge(new LocalFileAccess(".\\Files\\Day7.txt"), new Challenge_2020_07_02(), true) },
                 {"8-1", new Challenge(new LocalFileAccess(".\\Files\\Day8.txt"), new Challenge_2020_08_01(), true) },
                 {"8-2", new Challenge(new LocalFileAccess(".\\Files\\Day8.txt"), new Challenge_2020_08_02(), true) },
+                {"9-1", new Challenge(new LocalFileAccess(".\\Files\\Day9.txt"), new Challenge_2020_09_01(), true) },
+                {"9-2", new Challenge(new LocalFileAccess(".\\Files\\Day9.txt"), new Challenge_2020_09_02(), true) },
         };
 
             // Allow for selection via console for specific or array of tests to run
