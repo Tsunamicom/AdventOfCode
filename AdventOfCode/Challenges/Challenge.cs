@@ -9,15 +9,13 @@ namespace AdventOfCode.Challenges
 {
     public class Challenge : IChallenge
     {
-        readonly bool _enabled;
         readonly IDataAccess _dataSource;
         readonly IChallengeResolution _resolution;
 
-        public Challenge(IDataAccess dataSource, IChallengeResolution resolution, bool enabled)
+        public Challenge(IDataAccess dataSource, IChallengeResolution resolution)
         {
             _dataSource = dataSource;
             _resolution = resolution;
-            _enabled = enabled;
         }
 
         public async Task<ChallengeResult> Resolve()
@@ -34,11 +32,6 @@ namespace AdventOfCode.Challenges
 
             try
             {
-                if (!_enabled)
-                {
-                    throw new Exception("Challenge is Disabled.");
-                }
-
                 var data = await _dataSource.GetTestFileDetails().ConfigureAwait(false);
 
                 result.Result = _resolution.ResolveChallenge(data);
