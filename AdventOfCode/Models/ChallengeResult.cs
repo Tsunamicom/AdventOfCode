@@ -3,6 +3,11 @@
     public class ChallengeResult
     {
         /// <summary>
+        /// The year of the challenge
+        /// </summary>
+        public int ChallengeYear { get; set; }
+
+        /// <summary>
         /// The day of the challenge
         /// </summary>
         public int ChallengeDay { get; set; }

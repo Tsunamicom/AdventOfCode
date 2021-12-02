@@ -23,6 +23,7 @@ namespace AdventOfCode.Challenges
 
             var result = new ChallengeResult()
             {
+                ChallengeYear = _resolution.ChallengeYear,
                 ChallengeDay = _resolution.ChallengeDay,
                 ChallengePart = _resolution.ChallengePart
             };
