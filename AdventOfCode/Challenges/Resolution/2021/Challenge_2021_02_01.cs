@@ -12,7 +12,36 @@ namespace AdventOfCode.Challenges.Resolution
 
         public string ResolveChallenge(List<string> data)
         {
-            return "Not Implemented Yet";
+            var depthPos = 0;
+            var horizontalPos = 0;
+
+            foreach (var command in data)
+            {
+                var commandSet = command.Split(' ');
+                _ = int.TryParse(commandSet[1], out var adjustmentVal);
+
+                switch (commandSet[0])
+                {
+                    case "forward":
+                        horizontalPos += adjustmentVal;
+                        break;
+
+                    case "up":
+                        depthPos -= adjustmentVal;
+                        break;
+
+                    case "down":
+                        depthPos += adjustmentVal;
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+
+            var result = depthPos * horizontalPos;
+
+            return result.ToString();
         }
     }
 }
