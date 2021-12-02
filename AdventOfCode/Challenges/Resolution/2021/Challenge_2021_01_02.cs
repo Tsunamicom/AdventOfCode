@@ -12,7 +12,31 @@ namespace AdventOfCode.Challenges.Resolution
 
         public string ResolveChallenge(List<string> data)
         {
-            return "Not Implemented Yet";
+            var count = 0;
+            var dEnum = data.GetEnumerator();
+
+            int prevTotal = int.MaxValue;
+            
+            int? curr = null;
+            int? backOne = null;
+
+            while (dEnum.MoveNext())
+            {
+                int? backTwo = backOne;
+                backOne = curr;
+                
+                _ = int.TryParse(dEnum.Current, out var currVal);
+                curr = currVal;
+                if (backTwo.HasValue && backOne.HasValue)
+                {
+                    var total = (curr + backOne + backTwo).GetValueOrDefault();
+                    if (total > prevTotal) count++;
+
+                    prevTotal = total;
+                }
+            }
+
+            return count.ToString();
         }
     }
 }
