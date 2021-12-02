@@ -33,9 +33,6 @@ namespace AdventOfCode.Challenges.Resolution
                     case "down":
                         depthPos += adjustmentVal;
                         break;
-
-                    default:
-                        break;
                 }
             }
 
