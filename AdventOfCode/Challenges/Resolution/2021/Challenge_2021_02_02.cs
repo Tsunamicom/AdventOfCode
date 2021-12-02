@@ -35,9 +35,6 @@ namespace AdventOfCode.Challenges.Resolution
                     case "down":
                         aim += adjustmentVal;
                         break;
-
-                    default:
-                        break;
                 }
             }
 
