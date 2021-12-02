@@ -8,17 +8,8 @@
 
   <ItemGroup>
     <Compile Remove="bin\**" />
-    <Compile Remove="bin\Debug\netcoreapp3.1\Files\**" />
-    <Compile Remove="bin\Release\netcoreapp2.1\Files\**" />
-    <Compile Remove="bin\Release\netcoreapp3.1\Files\**" />
     <EmbeddedResource Remove="bin\**" />
-    <EmbeddedResource Remove="bin\Debug\netcoreapp3.1\Files\**" />
-    <EmbeddedResource Remove="bin\Release\netcoreapp2.1\Files\**" />
-    <EmbeddedResource Remove="bin\Release\netcoreapp3.1\Files\**" />
     <None Remove="bin\**" />
-    <None Remove="bin\Debug\netcoreapp3.1\Files\**" />
-    <None Remove="bin\Release\netcoreapp2.1\Files\**" />
-    <None Remove="bin\Release\netcoreapp3.1\Files\**" />
   </ItemGroup>
 
 </Project>
