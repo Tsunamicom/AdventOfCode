@@ -16,7 +16,7 @@ namespace AdventOfCode.Challenges.Resolution
             var dEnum = data.GetEnumerator();
 
             int prevTotal = int.MaxValue;
-            
+
             int? curr = null;
             int? backOne = null;
 
@@ -24,7 +24,7 @@ namespace AdventOfCode.Challenges.Resolution
             {
                 int? backTwo = backOne;
                 backOne = curr;
-                
+
                 _ = int.TryParse(dEnum.Current, out var currVal);
                 curr = currVal;
                 if (backTwo.HasValue && backOne.HasValue)
