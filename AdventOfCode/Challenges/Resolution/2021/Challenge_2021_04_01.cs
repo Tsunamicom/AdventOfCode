@@ -67,7 +67,7 @@ namespace AdventOfCode.Challenges.Resolution
         /// </summary>
         private static long CalculateUnmarkedValueSum(List<HashSet<int>> bingoCard, HashSet<int> allCalled)
         {
-            var allBingoValues = bingoCard.SelectMany(c => c.Select(b => b)).ToHashSet();
+            var allBingoValues = bingoCard.SelectMany(c => c).ToHashSet();
 
             var unmarkedValues = allBingoValues.Except(allCalled);
 
@@ -82,7 +82,7 @@ namespace AdventOfCode.Challenges.Resolution
             return data
                 .First()
                 .Split(',')
-                .Select(c => int.Parse(c))
+                .Select(int.Parse)
                 .ToList();
         }
 
@@ -125,7 +125,7 @@ namespace AdventOfCode.Challenges.Resolution
         {
             var currentCardRow = dataRow
                 .Split(" ", System.StringSplitOptions.RemoveEmptyEntries)
-                .Select(c => int.Parse(c)); // Expected that all values should be parsable, else fail
+                .Select(int.Parse); // Expected that all values should be parsable, else fail
 
             return currentCardRow;
         }
