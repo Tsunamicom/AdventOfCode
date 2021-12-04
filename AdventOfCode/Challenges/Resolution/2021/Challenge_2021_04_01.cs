@@ -124,11 +124,9 @@ namespace AdventOfCode.Challenges.Resolution
         private static IEnumerable<int> GetCurrentCardRow(string dataRow)
         {
             var currentCardRow = dataRow
-                .Replace("  ", " ") // Numbers are spaced by two spaces sometimes
-                .Split(" ") // Should now be able to split by a single space
-                .Where(c => !string.IsNullOrEmpty(c)) // Ignore where space in first position
+                .Split(" ", System.StringSplitOptions.RemoveEmptyEntries)
                 .Select(c => int.Parse(c)); // Expected that all values should be parsable, else fail
-                
+
             return currentCardRow;
         }
     }
