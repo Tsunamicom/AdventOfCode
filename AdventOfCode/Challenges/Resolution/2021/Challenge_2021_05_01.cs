@@ -41,7 +41,7 @@ namespace AdventOfCode.Challenges.Resolution
                 allUniquePoints.UnionWith(generatedPoints);
             }
 
-            return duplicatePoints.Count().ToString();
+            return duplicatePoints.Count.ToString();
         }
 
         /// <summary>
