@@ -15,10 +15,6 @@ namespace AdventOfCode.Challenges.Resolution
             var allUniquePoints = new HashSet<Tuple<int, int>>();
             var duplicatePoints = new HashSet<Tuple<int, int>>();
 
-            var horizontals = new List<HashSet<Tuple<int, int>>>();
-            var verticals = new List<HashSet<Tuple<int, int>>>();
-            var diagonals = new List<HashSet<Tuple<int, int>>>();
-
             foreach (var line in data)
             {
                 var lineCoordinates = line
@@ -32,21 +28,18 @@ namespace AdventOfCode.Challenges.Resolution
                 {
                     // Horizontal Line
                     generatedPoints = GenerateHorizontalLineCoordinates(lineCoordinates);
-                    horizontals.Add(generatedPoints);
                 }
 
                 else if (IsVerticalLine(lineCoordinates))
                 {
                     // Vertical Line
                     generatedPoints = GenerateVerticalLineCoordinates(lineCoordinates);
-                    verticals.Add(generatedPoints);
                 }
 
                 else
                 {
                     // Diagonal Line => Note:  This is assumed as true for the data from the problem description
                     generatedPoints = GenerateDiagonalLineCoordinates(lineCoordinates);
-                    diagonals.Add(generatedPoints);
                 }
 
                 var alreadyIncludedPts = allUniquePoints.Intersect(generatedPoints).ToHashSet();
@@ -55,7 +48,7 @@ namespace AdventOfCode.Challenges.Resolution
                 allUniquePoints.UnionWith(generatedPoints);
             }
 
-            return duplicatePoints.Count().ToString();
+            return duplicatePoints.Count.ToString();
         }
 
         /// <summary>
