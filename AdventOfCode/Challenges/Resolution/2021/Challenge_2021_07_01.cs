@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace AdventOfCode.Challenges.Resolution
 {
@@ -10,7 +12,21 @@ namespace AdventOfCode.Challenges.Resolution
 
         public string ResolveChallenge(List<string> data)
         {
-            return "Not Implemented Yet";
+            var positions = data.First().Split(',').Select(int.Parse).ToList();
+
+            var minCost = long.MaxValue;
+
+            for (int i = 0; i < positions.Count; i++)
+            {
+                var currentCost = 0;
+                for (int j = 0; j < positions.Count; j++)
+                {
+                    currentCost += Math.Abs(positions[j] - i);
+                }
+                minCost = Math.Min(minCost, currentCost);
+            }
+
+            return minCost.ToString();
         }
     }
 }
