@@ -14,18 +14,11 @@ namespace AdventOfCode.Challenges.Resolution
         {
             var positions = data.First().Split(',').Select(int.Parse).ToList();
 
-            var minCost = long.MaxValue;
-
-            for (int i = 0; i < positions.Count; i++)
-            {
-                var currentCost = 0;
-                for (int j = 0; j < positions.Count; j++)
-                {
-                    var positionDiff = Math.Abs(positions[j] - i);
-                    currentCost += positionDiff * (positionDiff + 1) / 2;
-                }
-                minCost = Math.Min(minCost, currentCost);
-            }
+            var minCost = positions
+                .Min(c => positions
+                    .Select(p => Math.Abs(p - positions.IndexOf(c)))
+                    .ToList()
+                    .Sum(c => c * (c + 1) / 2));
 
             return minCost.ToString();
         }
