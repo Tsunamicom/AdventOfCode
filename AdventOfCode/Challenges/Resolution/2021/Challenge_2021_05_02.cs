@@ -120,8 +120,8 @@ namespace AdventOfCode.Challenges.Resolution
 
             var distance = Math.Abs(lineCoordinates[0] - lineCoordinates[2]); // Assumed that diagonals are 45 degrees, per problem
 
-            var directionModifier = 
-                   (lineCoordinates[0] < lineCoordinates[2] && lineCoordinates[1] > lineCoordinates[3]) 
+            var directionModifier =
+                   (lineCoordinates[0] < lineCoordinates[2] && lineCoordinates[1] > lineCoordinates[3])
                 || (lineCoordinates[1] < lineCoordinates[3] && lineCoordinates[0] > lineCoordinates[2])
                 ? -1 // Going Up Left -> Right
                 : 1; // Going Down Left -> Right
