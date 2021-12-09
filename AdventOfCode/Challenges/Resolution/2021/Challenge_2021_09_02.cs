@@ -45,7 +45,6 @@ namespace AdventOfCode.Challenges.Resolution
                         targetLocationHeight <= left &&
                         targetLocationHeight <= right)
                     {
-                        //lowPoints.Add(targetLocationHeight);
                         basinSizes.Add(WalkBasin(intData, visited, i, j, 0));
                     }
                 }
