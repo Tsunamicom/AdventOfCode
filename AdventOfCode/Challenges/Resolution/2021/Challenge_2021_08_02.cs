@@ -33,7 +33,7 @@ namespace AdventOfCode.Challenges.Resolution
             // 6: abdefg    6 =
             // 0: abcefg    6 =
             // 9: abcdfg    6 =
-            // 8: abdcefg   7 -
+            // 8: abcdefg   7 -
 
             var totalValue = 0L;
 
@@ -44,20 +44,20 @@ namespace AdventOfCode.Challenges.Resolution
                 var decodeRequestData = currentLineData.Last().Split(' ', System.StringSplitOptions.RemoveEmptyEntries).ToList();
 
                 var one = CalculateOne(patternData);
-                string seven = CalculateSeven(patternData);
-                string four = CalculateFour(patternData);
-                string eight = CalculateEight(patternData);
-                string six = CalculateSix(patternData, one, eight);
-                string two = CalculateTwo(patternData, one, seven, four, eight);
-                string five = CalculateFive(patternData, one, eight, two);
-                string nine = CalculateNine(patternData, one, five);
-                string three = CalculateThree(patternData, two, five);
-                string zero = CalculateZero(patternData, six, nine);
+                var seven = CalculateSeven(patternData);
+                var four = CalculateFour(patternData);
+                var eight = CalculateEight(patternData);
+                var six = CalculateSix(patternData, one, eight);
+                var two = CalculateTwo(patternData, one, seven, four, eight);
+                var five = CalculateFive(patternData, one, eight, two);
+                var nine = CalculateNine(patternData, one, five);
+                var three = CalculateThree(patternData, two, five);
+                var zero = CalculateZero(patternData, six, nine);
 
                 var lookupList = new List<string>() { zero, one, two, three, four, five, six, seven, eight, nine };
 
-                lookupList = lookupList.Select(c => c = string.Concat(c.OrderBy(r => r))).ToList();
-                decodeRequestData = decodeRequestData.Select(c => c = string.Concat(c.OrderBy(r => r))).ToList();
+                lookupList = lookupList.Select(OrderedValue).ToList();
+                decodeRequestData = decodeRequestData.Select(OrderedValue).ToList();
 
                 var valueString = string.Concat(decodeRequestData.Select(c => lookupList.IndexOf(lookupList.Single(r => r == c))));
 
@@ -65,6 +65,11 @@ namespace AdventOfCode.Challenges.Resolution
             }
 
             return totalValue.ToString();
+        }
+
+        private string OrderedValue(string val)
+        {
+            return string.Concat(val.OrderBy(c => c));
         }
 
         private static string CalculateZero(string[] patternData, string six, string nine)
