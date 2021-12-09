@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace AdventOfCode.Challenges.Resolution
 {
@@ -10,7 +11,12 @@ namespace AdventOfCode.Challenges.Resolution
 
         public string ResolveChallenge(List<string> data)
         {
-            return "Not Implemented Yet";
+            var result = data
+                .Select(c => c.Split('|', System.StringSplitOptions.RemoveEmptyEntries).Last())
+                .SelectMany(c => c.Split(' ', System.StringSplitOptions.RemoveEmptyEntries))
+                .Count(c => new int[] { 2, 3, 4, 7 }.Contains(c.Length));
+
+            return result.ToString();
         }
     }
 }
