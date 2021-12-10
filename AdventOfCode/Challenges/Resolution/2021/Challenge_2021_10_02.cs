@@ -28,7 +28,6 @@ namespace AdventOfCode.Challenges.Resolution
         public string ResolveChallenge(List<string> data)
         {
             var allScores = new List<long>();
-            var charsToComplete = new List<char>();
 
             foreach (var chunk in data)
             {
