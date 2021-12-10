@@ -37,6 +37,8 @@ namespace AdventOfCode.Challenges.Resolution
 
                 for (int i = 0; i < chunk.Length; i++)
                 {
+                    if (discard) break;
+
                     var c = chunk[i];
 
                     if (_closingCharLookup.ContainsKey(c))
@@ -55,28 +57,44 @@ namespace AdventOfCode.Challenges.Resolution
                             }
                         }
                         discard = true;
-                        break;
                     }
                 }
 
                 if (!discard)
                 {
-                    var currentPoints = 0L;
-                    var validationPoints = validation.Select(c => _validationPoints[c]);
-                    foreach (var point in validationPoints)
-                    {
-                        currentPoints = (5 * currentPoints) + point;
-                    }
-
+                    var currentPoints = GetAutoCompletePoints(validation);
                     allScores.Add(currentPoints);
                 }
             }
 
+            var middleScore = GetMedianScoreValue(allScores);
+
+            return middleScore.ToString();
+        }
+
+        /// <summary>
+        /// Determines the median score of the collected points
+        /// </summary>
+        private static long GetMedianScoreValue(List<long> allScores)
+        {
             allScores.Sort();
 
             var middleScore = allScores[allScores.Count / 2];
+            return middleScore;
+        }
 
-            return middleScore.ToString();
+        /// <summary>
+        /// Calculates the points for autocompletion.
+        /// </summary>
+        private long GetAutoCompletePoints(Stack<char> validation)
+        {
+            var currentPoints = 0L;
+            foreach (var point in validation.Select(c => _validationPoints[c]))
+            {
+                currentPoints = (5 * currentPoints) + point;
+            }
+
+            return currentPoints;
         }
     }
 }
