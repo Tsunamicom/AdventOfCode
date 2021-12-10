@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace AdventOfCode.Challenges.Resolution
 {
@@ -8,9 +9,74 @@ namespace AdventOfCode.Challenges.Resolution
         public int ChallengeDay => 10;
         public int ChallengePart => 2;
 
+        private readonly Dictionary<char, char> _closingCharLookup = new Dictionary<char, char>
+        {
+            {'[', ']'},
+            {'(', ')'},
+            {'<', '>'},
+            {'{', '}'}
+        };
+
+        private readonly Dictionary<char, int> _validationPoints = new Dictionary<char, int>()
+        {
+            {'(', 1},
+            {'[', 2},
+            {'{', 3},
+            {'<', 4}
+        };
+
         public string ResolveChallenge(List<string> data)
         {
-            return "Not Implemented Yet";
+            var allScores = new List<long>();
+            var charsToComplete = new List<char>();
+
+            foreach (var chunk in data)
+            {
+                var discard = false;
+                var validation = new Stack<char>();
+
+                for (int i = 0; i < chunk.Length; i++)
+                {
+                    var c = chunk[i];
+
+                    if (_closingCharLookup.ContainsKey(c))
+                    {
+                        validation.Push(c);
+                    }
+                    else
+                    {
+                        if (validation.TryPeek(out var checkedVal))
+                        {
+
+                            if (_closingCharLookup[checkedVal] == c)
+                            {
+                                validation.Pop();
+                                continue;
+                            }
+                        }
+                        discard = true;
+                        break;
+                    }
+                }
+
+                if (!discard)
+                {
+                    var currentPoints = 0L;
+                    var validationPoints = validation.Select(c => _validationPoints[c]);
+                    foreach (var point in validationPoints)
+                    {
+                        currentPoints = (5 * currentPoints) + point;
+                    }
+
+                    allScores.Add(currentPoints);
+                }
+            }
+
+            allScores.Sort();
+
+            var middleScore = allScores[allScores.Count / 2];
+
+            return middleScore.ToString();
         }
     }
 }
