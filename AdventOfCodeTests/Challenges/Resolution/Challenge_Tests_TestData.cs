@@ -4,7 +4,7 @@ namespace AdventOfCode.Challenges.Resolution.Tests
 {
     public partial class Challenge_Tests
     {
-        private List<string> _TestData_2021_01 = new ()
+        private List<string> _TestData_2021_01 = new()
         {
             "199",
             "200",
@@ -142,9 +142,29 @@ namespace AdventOfCode.Challenges.Resolution.Tests
             "5283751526"
         };
 
-        private List<string> _TestData_2021_12 = new()
+        private List<string> _TestData_2021_12_Mod1 = new()
         {
-            
+            "start-A",
+            "start-b",
+            "A-c",
+            "A-b",
+            "b-d",
+            "A-end",
+            "b-end",
+        };
+
+        private List<string> _TestData_2021_12_Mod2 = new()
+        {
+            "dc-end",
+            "HN-start",
+            "start-kj",
+            "dc-start",
+            "dc-HN",
+            "LN-dc",
+            "HN-end",
+            "kj-sa",
+            "kj-HN",
+            "kj-dc"
         };
 
         private List<string> _TestData_2021_13 = new()

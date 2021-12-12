@@ -1,10 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AdventOfCode.Challenges.Resolution;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AdventOfCode.Challenges.Resolution.Tests
 {
@@ -212,23 +206,39 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         }
 
         [TestMethod(), TestCategory("2021"), TestCategory("Day1")]
-        public void ResolveChallenge_2021_12_01_Test()
+        public void ResolveChallenge_2021_12_01_Mod1_Test()
         {
-            Assert.Inconclusive("TBD");
             var challenge = new Challenge_2021_12_01();
-            var result = challenge.ResolveChallenge(_TestData_2021_12);
+            var result = challenge.ResolveChallenge(_TestData_2021_12_Mod1);
 
-            Assert.AreEqual("", result);
+            Assert.AreEqual("10", result);
+        }
+
+        [TestMethod(), TestCategory("2021"), TestCategory("Day1")]
+        public void ResolveChallenge_2021_12_01_Mod2_Test()
+        {
+            var challenge = new Challenge_2021_12_01();
+            var result = challenge.ResolveChallenge(_TestData_2021_12_Mod2);
+
+            Assert.AreEqual("19", result);
         }
 
         [TestMethod(), TestCategory("2021"), TestCategory("Day2")]
-        public void ResolveChallenge_2021_12_02_Test()
+        public void ResolveChallenge_2021_12_02_Mod1_Test()
         {
-            Assert.Inconclusive("TBD");
             var challenge = new Challenge_2021_12_02();
-            var result = challenge.ResolveChallenge(_TestData_2021_12);
+            var result = challenge.ResolveChallenge(_TestData_2021_12_Mod1);
 
-            Assert.AreEqual("", result);
+            Assert.AreEqual("36", result);
+        }
+
+        [TestMethod(), TestCategory("2021"), TestCategory("Day2")]
+        public void ResolveChallenge_2021_12_02_Mod2_Test()
+        {
+            var challenge = new Challenge_2021_12_02();
+            var result = challenge.ResolveChallenge(_TestData_2021_12_Mod2);
+
+            Assert.AreEqual("103", result);
         }
 
         [TestMethod(), TestCategory("2021"), TestCategory("Day1")]
