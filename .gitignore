@@ -5,3 +5,5 @@
 /.vs
 /AdventOfCode/bin/
 /AdventOfCode/obj
+/AdventOfCodeTests/bin/Debug/net6.0
+/AdventOfCodeTests/obj
