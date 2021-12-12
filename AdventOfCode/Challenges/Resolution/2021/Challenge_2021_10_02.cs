@@ -9,20 +9,20 @@ namespace AdventOfCode.Challenges.Resolution
         public int ChallengeDay => 10;
         public int ChallengePart => 2;
 
-        private readonly Dictionary<char, char> _closingCharLookup = new Dictionary<char, char>
+        private readonly Dictionary<char, char> _closingCharLookup = new()
         {
-            {'[', ']'},
-            {'(', ')'},
-            {'<', '>'},
-            {'{', '}'}
+            { '[', ']' },
+            { '(', ')' },
+            { '<', '>' },
+            { '{', '}' }
         };
 
-        private readonly Dictionary<char, int> _validationPoints = new Dictionary<char, int>()
+        private readonly Dictionary<char, int> _validationPoints = new()
         {
-            {'(', 1},
-            {'[', 2},
-            {'{', 3},
-            {'<', 4}
+            { '(', 1 },
+            { '[', 2 },
+            { '{', 3 },
+            { '<', 4 }
         };
 
         public string ResolveChallenge(List<string> data)
