@@ -142,6 +142,74 @@ namespace AdventOfCode.Challenges.Resolution.Tests
             "5283751526"
         };
 
+        private List<string> _TestData_2021_12 = new()
+        {
+            
+        };
 
+        private List<string> _TestData_2021_13 = new()
+        {
+
+        };
+
+        private List<string> _TestData_2021_14 = new()
+        {
+
+        };
+
+        private List<string> _TestData_2021_15 = new()
+        {
+
+        };
+
+        private List<string> _TestData_2021_16 = new()
+        {
+
+        };
+
+        private List<string> _TestData_2021_17 = new()
+        {
+
+        };
+
+        private List<string> _TestData_2021_18 = new()
+        {
+
+        };
+
+        private List<string> _TestData_2021_19 = new()
+        {
+
+        };
+
+        private List<string> _TestData_2021_20 = new()
+        {
+
+        };
+
+        private List<string> _TestData_2021_21 = new()
+        {
+
+        };
+
+        private List<string> _TestData_2021_22 = new()
+        {
+
+        };
+
+        private List<string> _TestData_2021_23 = new()
+        {
+
+        };
+
+        private List<string> _TestData_2021_24 = new()
+        {
+
+        };
+
+        private List<string> _TestData_2021_25 = new()
+        {
+
+        };
     }
 }
