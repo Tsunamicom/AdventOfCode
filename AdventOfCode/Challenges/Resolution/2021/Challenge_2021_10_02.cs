@@ -11,18 +11,18 @@ namespace AdventOfCode.Challenges.Resolution
 
         private readonly Dictionary<char, char> _closingCharLookup = new()
         {
-            {'[', ']'},
-            {'(', ')'},
-            {'<', '>'},
-            {'{', '}'}
+            { '[', ']' },
+            { '(', ')' },
+            { '<', '>' },
+            { '{', '}' }
         };
 
         private readonly Dictionary<char, int> _validationPoints = new()
         {
-            {'(', 1},
-            {'[', 2},
-            {'{', 3},
-            {'<', 4}
+            { '(', 1 },
+            { '[', 2 },
+            { '{', 3 },
+            { '<', 4 }
         };
 
         public string ResolveChallenge(List<string> data)
