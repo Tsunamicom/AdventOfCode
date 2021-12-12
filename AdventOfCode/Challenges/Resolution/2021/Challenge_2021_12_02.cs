@@ -9,21 +9,20 @@ namespace AdventOfCode.Challenges.Resolution
         public int ChallengeDay => 12;
         public int ChallengePart => 2;
 
-        private List<List<string>> _allPaths = new();
+        private readonly List<List<string>> _allPaths = new();
+        private static readonly string _startLabel = "start";
+        private static readonly string _endLabel = "end";
 
         public string ResolveChallenge(List<string> data)
         {
             var connections = MapConnections(data);
 
-            foreach (var location in connections["start"])
+            foreach (var location in connections[_startLabel])
             {
-                var visited = new HashSet<string>();
                 var stack = new Stack<string>();
+                stack.Push(_startLabel);
 
-                visited.Add("start");
-                stack.Push("start");
-
-                TraverseConnections(connections, visited, stack, location);
+                TraverseConnections(connections, stack, location);
             }
 
             return _allPaths.Count().ToString();
@@ -32,7 +31,7 @@ namespace AdventOfCode.Challenges.Resolution
         /// <summary>
         /// Traverse the connections in order to build the paths
         /// </summary>
-        private void TraverseConnections(Dictionary<string, HashSet<string>> connections, HashSet<string> visited, Stack<string> stack, string currentLocation)
+        private void TraverseConnections(Dictionary<string, HashSet<string>> connections, Stack<string> stack, string currentLocation)
         {
             if (stack.Contains(currentLocation) && currentLocation.All(c => char.IsLower(c)))
             {
@@ -44,10 +43,9 @@ namespace AdventOfCode.Challenges.Resolution
                 if (hasExistingDuplicateLowercase) return;
             }
 
-            visited.Add(currentLocation);
             stack.Push(currentLocation);
 
-            if (currentLocation == "end")
+            if (currentLocation == _endLabel)
             {
                 _allPaths.Add(stack.ToList());
                 stack.Pop();
@@ -56,7 +54,7 @@ namespace AdventOfCode.Challenges.Resolution
 
             foreach (var location in connections[currentLocation])
             {
-                TraverseConnections(connections, visited, stack, location);
+                TraverseConnections(connections, stack, location);
             }
             stack.Pop();
         }
@@ -72,8 +70,8 @@ namespace AdventOfCode.Challenges.Resolution
             foreach (var line in data)
             {
                 var connection = line.Split("-");
-                if (connection[1] != "start" && connection[0] != "end") SetHashValue(mapping, connection[0], connection[1]);
-                if (connection[0] != "start" && connection[1] != "end") SetHashValue(mapping, connection[1], connection[0]);
+                if (connection[1] != _startLabel && connection[0] != _endLabel) SetHashValue(mapping, connection[0], connection[1]);
+                if (connection[0] != _startLabel && connection[1] != _endLabel) SetHashValue(mapping, connection[1], connection[0]);
             }
 
             return mapping;
@@ -82,13 +80,13 @@ namespace AdventOfCode.Challenges.Resolution
         /// <summary>
         /// Set an array value Array[i][j] for a Dictionary and Hashset construct
         /// </summary>
-        private static void SetHashValue<I, J>(Dictionary<I, HashSet<J>> dictionaryHash, I i, J j)
+        private static void SetHashValue<IType, JType>(Dictionary<IType, HashSet<JType>> dictionaryHash, IType iVal, JType jVal)
         {
-            if (dictionaryHash.TryGetValue(i, out var jHash)) jHash.Add(j);
+            if (dictionaryHash.TryGetValue(iVal, out var jHash)) jHash.Add(jVal);
             else
             {
-                dictionaryHash.Add(i, new HashSet<J>());
-                dictionaryHash[i].Add(j);
+                dictionaryHash.Add(iVal, new HashSet<JType>());
+                dictionaryHash[iVal].Add(jVal);
             }
         }
     }
