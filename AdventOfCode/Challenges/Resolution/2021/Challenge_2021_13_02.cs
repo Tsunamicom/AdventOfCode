@@ -58,6 +58,29 @@ namespace AdventOfCode.Challenges.Resolution
                 foldVisible.Add(visibleCount);
             }
 
+            List<string> image = GenerateImage(paperLocations, paperHeight, paperLength);
+            OutputImageToDebug(image);
+            return string.Join(",", image);
+        }
+
+        /// <summary>
+        /// Output the image to the debug console, if running in debug
+        /// </summary>
+        private static void OutputImageToDebug(List<string> image)
+        {
+#if DEBUG
+            foreach (var line in image)
+            {
+                Debug.WriteLine(line);
+            }
+#endif
+        }
+
+        /// <summary>
+        /// For a given paper size, provide a visual representation of marked points representing an image.
+        /// </summary>
+        private static List<string> GenerateImage(Dictionary<long, HashSet<long>> paperLocations, long paperHeight, long paperLength)
+        {
             var image = new List<string>();
             for (int i = 0; i < paperHeight; i++)
             {
@@ -82,18 +105,9 @@ namespace AdventOfCode.Challenges.Resolution
                 {
                     image.Add(new string('.', (int)paperLength));
                 }
-
-
             }
 
-#if DEBUG
-            foreach (var line in image)
-            {
-                Debug.WriteLine(line);
-            }
-#endif
-
-            return string.Join(",", image);
+            return image;
         }
 
         /// <summary>
