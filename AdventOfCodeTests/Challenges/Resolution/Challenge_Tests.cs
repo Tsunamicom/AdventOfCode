@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace AdventOfCode.Challenges.Resolution.Tests
 {
@@ -244,21 +245,32 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         [TestMethod(), TestCategory("2021"), TestCategory("Day1")]
         public void ResolveChallenge_2021_13_01_Test()
         {
-            Assert.Inconclusive("TBD");
             var challenge = new Challenge_2021_13_01();
             var result = challenge.ResolveChallenge(_TestData_2021_13);
 
-            Assert.AreEqual("", result);
+            Assert.AreEqual("17", result);
         }
 
         [TestMethod(), TestCategory("2021"), TestCategory("Day2")]
         public void ResolveChallenge_2021_13_02_Test()
         {
-            Assert.Inconclusive("TBD");
             var challenge = new Challenge_2021_13_02();
             var result = challenge.ResolveChallenge(_TestData_2021_13);
 
-            Assert.AreEqual("", result);
+            var expectedValueList = new List<string>()
+            {
+                "#####",
+                "#...#",
+                "#...#",
+                "#...#",
+                "#####",
+                ".....",
+                "....."
+            };
+
+            var expectedValue = string.Join(",", expectedValueList);
+
+            Assert.AreEqual(expectedValue, result);
         }
 
         [TestMethod(), TestCategory("2021"), TestCategory("Day1")]
