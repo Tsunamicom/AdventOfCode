@@ -276,21 +276,20 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         [TestMethod(), TestCategory("2021"), TestCategory("Day1")]
         public void ResolveChallenge_2021_14_01_Test()
         {
-            Assert.Inconclusive("TBD");
             var challenge = new Challenge_2021_14_01();
             var result = challenge.ResolveChallenge(_TestData_2021_14);
 
-            Assert.AreEqual("", result);
+            Assert.AreEqual("1588", result);
         }
 
         [TestMethod(), TestCategory("2021"), TestCategory("Day2")]
         public void ResolveChallenge_2021_14_02_Test()
         {
-            Assert.Inconclusive("TBD");
-            var challenge = new Challenge_2021_12_02();
+            //Assert.Inconclusive("TBD -- Too Slow");
+            var challenge = new Challenge_2021_14_02();
             var result = challenge.ResolveChallenge(_TestData_2021_14);
 
-            Assert.AreEqual("", result);
+            Assert.AreEqual("2188189693529", result);
         }
 
         [TestMethod(), TestCategory("2021"), TestCategory("Day1")]
