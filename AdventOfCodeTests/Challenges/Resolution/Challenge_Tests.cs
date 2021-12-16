@@ -117,7 +117,6 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         [TestMethod(), TestCategory("2021"), TestCategory("Day1")]
         public void ResolveChallenge_2021_07_01_Test()
         {
-            Assert.Inconclusive("Need to re-do this logic, take Average.");
             var challenge = new Challenge_2021_07_01();
             var result = challenge.ResolveChallenge(_TestData_2021_07);
 
@@ -127,7 +126,6 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         [TestMethod(), TestCategory("2021"), TestCategory("Day2")]
         public void ResolveChallenge_2021_07_02_Test()
         {
-            Assert.Inconclusive("Need to re-do this logic, take Average.");
             var challenge = new Challenge_2021_07_02();
             var result = challenge.ResolveChallenge(_TestData_2021_07);
 
