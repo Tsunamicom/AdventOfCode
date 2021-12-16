@@ -216,7 +216,16 @@ namespace AdventOfCode.Challenges.Resolution.Tests
 
         private List<string> _TestData_2021_15 = new()
         {
-
+            "1163751742",
+            "1381373672",
+            "2136511328",
+            "3694931569",
+            "7463417111",
+            "1319128137",
+            "1359912421",
+            "3125421639",
+            "1293138521",
+            "2311944581",
         };
 
         private List<string> _TestData_2021_16 = new()
