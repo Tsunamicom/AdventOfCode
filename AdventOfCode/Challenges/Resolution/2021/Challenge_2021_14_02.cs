@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace AdventOfCode.Challenges.Resolution
 {
@@ -20,7 +17,7 @@ namespace AdventOfCode.Challenges.Resolution
 
             var instructions = data.GetRange(2, data.Count - 2).Select(c => c.Split(" -> "));
             var rules = instructions.ToDictionary(c => c[0], c => c[1]);
-            
+
             var pairs = GetInitialPairs(target, instructions);
 
             for (int i = 0; i < steps; i++)
