@@ -37,24 +37,19 @@ namespace AdventOfCode.Challenges.Resolution
             var paperHeight = paperLocations.Max(c => c.Key);
             var paperLength = paperLocations.SelectMany(c => c.Value).Max();
 
-            for (int i = 0; i < foldInstructions.Count; i++)
+            switch (foldInstructions[0][0]) // One round of folding
             {
-                switch (foldInstructions[i][0])
-                {
-                    case "x":
-                        (paperLength, paperLocations) = FoldVertical(paperLocations, paperLength, long.Parse(foldInstructions[i][1]));
-                        break;
-                    case "y":
-                        (paperHeight, paperLocations) = FoldHorizontal(paperLocations, paperHeight, long.Parse(foldInstructions[i][1]));
-                        break;
-                }
-
-                var visibleCount = paperLocations.SelectMany(c => c.Value).Count();
-
-                return visibleCount.ToString(); // Part 1, show only the first
+                case "x":
+                    (paperLength, paperLocations) = FoldVertical(paperLocations, paperLength, long.Parse(foldInstructions[0][1]));
+                    break;
+                case "y":
+                    (paperHeight, paperLocations) = FoldHorizontal(paperLocations, paperHeight, long.Parse(foldInstructions[0][1]));
+                    break;
             }
 
-            return null;
+            var visibleCount = paperLocations.SelectMany(c => c.Value).Count();
+
+            return visibleCount.ToString();
         }
 
         /// <summary>
