@@ -310,21 +310,34 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         [TestMethod(), TestCategory("2021"), TestCategory("Day1")]
         public void ResolveChallenge_2021_16_01_Test()
         {
-            Assert.Inconclusive("TBD");
             var challenge = new Challenge_2021_16_01();
-            var result = challenge.ResolveChallenge(_TestData_2021_16);
 
-            Assert.AreEqual("", result);
+            Assert.AreEqual("6",challenge.ResolveChallenge(_TestData_2021_16));
+
+            Assert.AreEqual("12", challenge.ResolveChallenge("620080001611562C8802118E34"));
+            Assert.AreEqual("23", challenge.ResolveChallenge("C0015000016115A2E0802F182340"));
+            Assert.AreEqual("14", challenge.ResolveChallenge("EE00D40C823060"));
+            Assert.AreEqual("16", challenge.ResolveChallenge("8A004A801A8002F478"));
+            Assert.AreEqual("31", challenge.ResolveChallenge("A0016C880162017C3686B18A3D4780"));
         }
 
         [TestMethod(), TestCategory("2021"), TestCategory("Day2")]
         public void ResolveChallenge_2021_16_02_Test()
         {
-            Assert.Inconclusive("TBD");
+            Assert.Inconclusive();
             var challenge = new Challenge_2021_16_02();
-            var result = challenge.ResolveChallenge(_TestData_2021_16);
+            //var result = challenge.ResolveChallenge(_TestData_2021_16);
 
-            Assert.AreEqual("", result);
+            //Assert.AreEqual("6", challenge.ResolveChallenge(_TestData_2021_16));
+
+            //Assert.AreEqual("3", challenge.ResolveChallenge("C200B40A82")); // Sum of Packets
+            //Assert.AreEqual("54", challenge.ResolveChallenge("04005AC33890")); // Multiplication of Packets
+            //Assert.AreEqual("7", challenge.ResolveChallenge("880086C3E88112"));
+            //Assert.AreEqual("9", challenge.ResolveChallenge("CE00C43D881120"));
+            //Assert.AreEqual("1", challenge.ResolveChallenge("D8005AC2A8F0"));
+            //Assert.AreEqual("0", challenge.ResolveChallenge("F600BC2D8F"));
+            //Assert.AreEqual("0", challenge.ResolveChallenge("9C005AC2F8F0"));
+            //Assert.AreEqual("1", challenge.ResolveChallenge("9C0141080250320F1802104A08"));
         }
 
         [TestMethod(), TestCategory("2021"), TestCategory("Day1")]
