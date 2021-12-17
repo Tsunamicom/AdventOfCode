@@ -324,20 +324,20 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         [TestMethod(), TestCategory("2021"), TestCategory("Day2")]
         public void ResolveChallenge_2021_16_02_Test()
         {
-            Assert.Inconclusive();
+            //Assert.Inconclusive();
             var challenge = new Challenge_2021_16_02();
             //var result = challenge.ResolveChallenge(_TestData_2021_16);
 
             //Assert.AreEqual("6", challenge.ResolveChallenge(_TestData_2021_16));
 
-            //Assert.AreEqual("3", challenge.ResolveChallenge("C200B40A82")); // Sum of Packets
-            //Assert.AreEqual("54", challenge.ResolveChallenge("04005AC33890")); // Multiplication of Packets
-            //Assert.AreEqual("7", challenge.ResolveChallenge("880086C3E88112"));
-            //Assert.AreEqual("9", challenge.ResolveChallenge("CE00C43D881120"));
-            //Assert.AreEqual("1", challenge.ResolveChallenge("D8005AC2A8F0"));
-            //Assert.AreEqual("0", challenge.ResolveChallenge("F600BC2D8F"));
-            //Assert.AreEqual("0", challenge.ResolveChallenge("9C005AC2F8F0"));
-            //Assert.AreEqual("1", challenge.ResolveChallenge("9C0141080250320F1802104A08"));
+            Assert.AreEqual("3", challenge.ResolveChallenge("C200B40A82"), "Sum"); // Sum of Packets
+            Assert.AreEqual("54", challenge.ResolveChallenge("04005AC33890"), "Mult"); // Multiplications
+            Assert.AreEqual("7", challenge.ResolveChallenge("880086C3E88112"), "Min"); // Min
+            Assert.AreEqual("9", challenge.ResolveChallenge("CE00C43D881120"), "Max"); // Max
+            Assert.AreEqual("1", challenge.ResolveChallenge("D8005AC2A8F0"), "x < y"); // x < y
+            Assert.AreEqual("0", challenge.ResolveChallenge("F600BC2D8F"), "x > y"); // x > y
+            Assert.AreEqual("0", challenge.ResolveChallenge("9C005AC2F8F0"), "x == y"); // x == y
+            Assert.AreEqual("1", challenge.ResolveChallenge("9C0141080250320F1802104A08"), "x + y == r + v"); // x + y == r + v
         }
 
         [TestMethod(), TestCategory("2021"), TestCategory("Day1")]
