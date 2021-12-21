@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace AdventOfCode.Challenges.Resolution
 {
@@ -16,6 +17,11 @@ namespace AdventOfCode.Challenges.Resolution
 
         public string ResolveChallenge(List<string> data)
         {
+            return Task.Run(() => ResolveChallengeAsync(data)).GetAwaiter().GetResult();
+        }
+
+        public async Task<string> ResolveChallengeAsync(List<string> data)
+        {
             _lightValues = data.First().Select(c => c).ToList();
             var initialMap = data.Skip(2).Select(c => c.Select(r => r).ToList()).ToList();
 
@@ -24,14 +30,11 @@ namespace AdventOfCode.Challenges.Resolution
 
             for (int i = 0; i < enhanceLevel; i++)
             {
-                //OutputToDebug(data, workingCopy);
                 var fillChar = ((_lightValues[0] == '#') && (i % 2 != 0)) ? '#' : '.';
 
-                workingCopy = ExpandWorkingCopy(workingCopy, fillChar);
-                workingCopy = GenerateEnhancedMap(workingCopy, fillChar);
+                workingCopy = await ExpandWorkingCopy(workingCopy, fillChar).ConfigureAwait(false);
+                workingCopy = await GenerateEnhancedMap(workingCopy, fillChar).ConfigureAwait(false);
             }
-
-            //workingCopy.ForEach(c => Debug.WriteLine(string.Concat(c)));
 
             var litPixels = workingCopy.SelectMany(c => c).Count(c => c == '#');
             return $"{litPixels}";
@@ -44,17 +47,22 @@ namespace AdventOfCode.Challenges.Resolution
             Debug.WriteLine("");
         }
 
-        private static List<List<char>> ExpandWorkingCopy(List<List<char>> initialMap, char fillChar)
+        private static async Task<List<List<char>>> ExpandWorkingCopy(List<List<char>> initialMap, char fillChar)
         {
-            var workingCopy = new List<List<char>>();
+            List<List<char>> workingCopy = new();
 
             // Pad Top
             workingCopy.Add(new string(fillChar, initialMap[0].Count + 2).Select(c => c).ToList());
 
             foreach (var scanLine in initialMap)
             {
-                var workingScanLine = scanLine.Prepend(fillChar).Append(fillChar).ToList();
-                workingCopy.Add(workingScanLine);
+                List<char> workingScanLine = new();
+
+                workingScanLine.Add(fillChar);
+                workingScanLine.AddRange(scanLine.ToList());
+                workingScanLine.Add(fillChar);
+                
+                workingCopy.Add(workingScanLine.ToList());
             }
 
             // Pad Bottom
@@ -63,27 +71,43 @@ namespace AdventOfCode.Challenges.Resolution
             return workingCopy;
         }
 
-        private List<List<char>> GenerateEnhancedMap(List<List<char>> initialMap, char fillChar)
+        private async Task<List<List<char>>> GenerateEnhancedMap(List<List<char>> initialMap, char fillChar)
         {
-            var newMap = new List<List<char>>();
+            List<List<char>> newMap = new();
+
+            List<Task<List<char>>> rowTasks = new();
 
             for (int y = 0; y < initialMap.Count; y++)
             {
-                for (int x = 0; x < initialMap[y].Count; x++)
-                {
-                    if (newMap.Count <= y) newMap.Add(new List<char>());
-                    var pixelValueBinary = CalculatePixelValue(initialMap, x, y, fillChar);
+                rowTasks.Add(EnhanceRowValues(initialMap, fillChar, y));
+            }
 
-                    var newValue = _lightValues[pixelValueBinary];
+            await Task.WhenAll(rowTasks).ConfigureAwait(false);
 
-                    newMap[y].Add(newValue);
-                }
+            foreach (var result in rowTasks)
+            {
+                newMap.Add(result.Result);
             }
 
             return newMap;
         }
 
-        private int CalculatePixelValue(List<List<char>> initialMap, int x, int y, char fillChar)
+        private async Task<List<char>> EnhanceRowValues(List<List<char>> initialMap, char fillChar, int y)
+        {
+            List<char> currentRow = new();
+            for (int x = 0; x < initialMap[0].Count; x++)
+            {
+                var pixelValueBinary = await CalculatePixelValue(initialMap, x, y, fillChar).ConfigureAwait(false);
+
+                var newValue = _lightValues[pixelValueBinary];
+
+                currentRow.Add(newValue);
+            }
+
+            return currentRow;
+        }
+
+        private async Task<int> CalculatePixelValue(List<List<char>> initialMap, int x, int y, char fillChar)
         {
             var sb = new StringBuilder();
 
