@@ -411,7 +411,7 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         {
             var challenge = new Challenge_2021_20_02();
             var result = challenge.ResolveChallenge(_TestData_2021_20);
-
+            
             Assert.AreEqual("3351", result);
         }
 
