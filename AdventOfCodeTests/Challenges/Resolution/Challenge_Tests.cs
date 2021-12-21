@@ -312,8 +312,7 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         {
             var challenge = new Challenge_2021_16_01();
 
-            Assert.AreEqual("6",challenge.ResolveChallenge(_TestData_2021_16));
-
+            Assert.AreEqual("6", challenge.ResolveChallenge(_TestData_2021_16));
             Assert.AreEqual("12", challenge.ResolveChallenge("620080001611562C8802118E34"));
             Assert.AreEqual("23", challenge.ResolveChallenge("C0015000016115A2E0802F182340"));
             Assert.AreEqual("14", challenge.ResolveChallenge("EE00D40C823060"));
@@ -324,11 +323,9 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         [TestMethod(), TestCategory("2021"), TestCategory("Day2")]
         public void ResolveChallenge_2021_16_02_Test()
         {
-            //Assert.Inconclusive();
             var challenge = new Challenge_2021_16_02();
-            //var result = challenge.ResolveChallenge(_TestData_2021_16);
 
-            //Assert.AreEqual("6", challenge.ResolveChallenge(_TestData_2021_16));
+            Assert.AreEqual("2021", challenge.ResolveChallenge(_TestData_2021_16));
 
             Assert.AreEqual("3", challenge.ResolveChallenge("C200B40A82"), "Sum"); // Sum of Packets
             Assert.AreEqual("54", challenge.ResolveChallenge("04005AC33890"), "Mult"); // Multiplications
@@ -337,7 +334,7 @@ namespace AdventOfCode.Challenges.Resolution.Tests
             Assert.AreEqual("1", challenge.ResolveChallenge("D8005AC2A8F0"), "x < y"); // x < y
             Assert.AreEqual("0", challenge.ResolveChallenge("F600BC2D8F"), "x > y"); // x > y
             Assert.AreEqual("0", challenge.ResolveChallenge("9C005AC2F8F0"), "x == y"); // x == y
-            Assert.AreEqual("1", challenge.ResolveChallenge("9C0141080250320F1802104A08"), "x + y == r + v"); // x + y == r + v
+            Assert.AreEqual("1", challenge.ResolveChallenge("9C0141080250320F1802104A08"), "x + y == r * v"); // x + y == r * v
         }
 
         [TestMethod(), TestCategory("2021"), TestCategory("Day1")]

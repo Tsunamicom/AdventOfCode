@@ -11,117 +11,97 @@ namespace AdventOfCode.Challenges.Resolution
         public int ChallengeDay => 16;
         public int ChallengePart => 2;
 
-        List<(int, int, long)> _packetInfo = new();
-        /// <summary>
-        /// For Unit Tests
-        /// </summary>
+        private class PacketInfo
+        {
+            public PacketInfo(PacketInfo parentPacket, string packageMessage, int version, int typeId, long value)
+            {
+                Parent = parentPacket;
+                PackageMessage = packageMessage;
+                Version = version;
+                TypeId = typeId;
+                Value = value;
+            }
+
+            public string PackageMessage { get; set; }
+
+            public PacketInfo Parent { get; set; }
+
+            public List<PacketInfo> Children = new();
+
+            public int Version { get; private set; }
+
+            public int TypeId { get; private set; }
+
+            public long Value { get; set; }
+        }
+
+
         public string ResolveChallenge(string message)
         {
             var messageBinary = string.Concat(message.Select(c => Convert.ToString(Convert.ToInt32(c.ToString(), 16), 2).PadLeft(4, '0')));
 
-            _packetInfo.Clear();
+            PacketInfo parentPacket = new PacketInfo(null, messageBinary, -1, -1, 0);
 
-            // (packetVersion, packetTypeId, value)
-            GetEncodedString(messageBinary, _packetInfo, -1);
-            var sum = 0L;
-            //for (int i = 0; i < packetInfo.Count; i++)
-            //{
-            sum = CountVals(_packetInfo, 0);
-            //}
+            var (parsedIdx, currentPacket) = GetEncodedString(messageBinary, parentPacket, 0);
 
+            //var packetVersionSum = GetVersionSum(currentPacket);
+            var bitEval = CountVals(currentPacket);
 
-            return $"{sum}";
+            return $"{bitEval}";
         }
-
-        private long CountVals(List<(int, int, long)> packetInfo, int index)
-        {
-            if (index < 0) return 0;
-            var (_, type, value) = packetInfo[index];
-
-            if (packetInfo.Count > 1)
-            {
-                var subPackets = packetInfo.GetRange(1, packetInfo.Count - 1);
-
-                switch (type)
-                {
-                    case 0:
-                        {
-                            return subPackets.Sum(c => CountVals(subPackets, subPackets.IndexOf(c)));
-                        }
-                    case 1:
-                        {
-                            return subPackets.Aggregate(1L, (sum, b) => sum * CountVals(subPackets, subPackets.IndexOf(b)));
-                        }
-                    case 2:
-                        {
-                            return subPackets.Min(c => CountVals(subPackets, subPackets.IndexOf(c)));
-                        }
-                    case 3:
-                        {
-                            return subPackets.Max(c => CountVals(subPackets, subPackets.IndexOf(c)));
-                        }
-                    case 5:
-                        {
-                            return Convert.ToInt64(CountVals(subPackets, 0) > CountVals(subPackets, 1));
-                        }
-                    case 6:
-                        {
-                            return Convert.ToInt64(CountVals(subPackets, 0) < CountVals(subPackets, 1));
-                        }
-                    case 7:
-                        {
-                            var x = CountVals(subPackets, 0);
-                            var y = CountVals(subPackets, 1);
-                            return Convert.ToInt64(x == y); 
-                        }
-                }
-            }
-            
-            return value;
-        }
-
 
         /// <summary>
-        /// For file input
+        /// File Input wrapper
         /// </summary>
         public string ResolveChallenge(List<string> data)
         {
             var message = data.First();
-            var messageBinary = string.Concat(message.Select(c => Convert.ToString(Convert.ToInt32(c.ToString(), 16), 2).PadLeft(4, '0')));
+            return ResolveChallenge(message);
+        }
 
-            // (packetVersion, packetTypeId, value)
-            List<(int, int, long)> packetInfo = new();
+        private long GetVersionSum(PacketInfo packetInfo)
+        {
+            var sum = (packetInfo.Version == -1) ? 0 : packetInfo.Version;
 
-            GetEncodedString(messageBinary, packetInfo, -1);
+            if (packetInfo.Children.Any())
+            {
+                return sum + packetInfo.Children.Sum(c => GetVersionSum(c));
+            }
 
-            return $"{packetInfo.Sum(c => c.Item1)}";
+            return sum;
         }
 
         /// <summary>
-        /// For a given encoded binary string, catalogue the decoded packet details (possible nested)
+        /// For a given encoded binary string, catalogue the decoded packet details (possible nested) and return the current Index
         /// </summary>
-        private void GetEncodedString(string messageBinary, List<(int, int, long)> packetInfo, int count)
+        private (int, PacketInfo) GetEncodedString(string messageBinary, PacketInfo parentPacket, int indexMod)
         {
             if (string.IsNullOrEmpty(messageBinary)
                 || int.TryParse(messageBinary, out var msgVal) && msgVal == 0)
             {
-                return;
+                return (messageBinary?.Length - 1 ?? 0, null);
             }
 
             var packetVersion = Convert.ToInt32(messageBinary.Substring(0, 3), 2); // Need to sum all of these, maybe make (packetVersion, currentString) as return
             var packetTypeId = Convert.ToInt32(messageBinary.Substring(3, 3), 2);
 
+            var currentPacket = new PacketInfo(parentPacket, messageBinary, packetVersion, packetTypeId, 0);
+            if (parentPacket == null) parentPacket = currentPacket;
+
+            indexMod = 0;
+
             if (packetTypeId == 4)
             {
                 var (processedCount, value) = GetLiteral(messageBinary);
-                packetInfo.Add((packetVersion, packetTypeId, value));
 
-                var remainingToProcess = messageBinary.Substring(processedCount);
-                GetEncodedString(remainingToProcess, packetInfo, count - 1);
+                currentPacket.Value = value;
+
+                indexMod = processedCount;
+                var remaining = messageBinary.Length - processedCount;
+                if (remaining < 11) indexMod += remaining;
             }
             else
             {
-                packetInfo.Add((packetVersion, packetTypeId, 0));
 
                 switch (messageBinary[6])
                 {
@@ -130,8 +110,18 @@ namespace AdventOfCode.Challenges.Resolution
                             // 15 bits for Length
                             var pkLength = Convert.ToInt32(messageBinary.Substring(7, 15), 2);
 
-                            GetEncodedString(messageBinary.Substring(22, pkLength), packetInfo, -1);
-                            GetEncodedString(messageBinary.Substring(22 + pkLength), packetInfo, count - 1);
+                            while (pkLength > 0)
+                            {
+                                (var indexMod1, var newPacket1) = GetEncodedString(messageBinary.Substring(22 + indexMod, pkLength), currentPacket, indexMod);
+                                if (newPacket1 != null)
+                                {
+                                    currentPacket.Children.Add(newPacket1);
+                                }
+                                indexMod += indexMod1;
+                                pkLength -= indexMod1;
+                            }
+                            indexMod += 22;
+
                             break;
                         }
                     case '1':
@@ -139,11 +129,25 @@ namespace AdventOfCode.Challenges.Resolution
                             // 11 bits for Count
                             var packetCount = Convert.ToInt32(messageBinary.Substring(7, 11), 2);
 
-                            GetEncodedString(messageBinary.Substring(18), packetInfo, packetCount);
+                            for (int i = 0; i < packetCount; i++)
+                            {
+                                var msgToParse = messageBinary.Substring(18 + indexMod);
+                                (var indexMod3, var newPacket) = GetEncodedString(msgToParse, currentPacket, indexMod);
+
+                                if (newPacket != null)
+                                {
+                                    currentPacket.Children.Add(newPacket);
+                                }
+
+                                indexMod += indexMod3;
+                            }
+                            indexMod += 18;
+
                             break;
                         }
                 }
             }
+            return (indexMod, currentPacket);
         }
 
         /// <summary>
@@ -166,6 +170,50 @@ namespace AdventOfCode.Challenges.Resolution
             }
 
             return (count, Convert.ToInt64(sb.ToString(), 2));
+        }
+
+        private long CountVals(PacketInfo packetInfo)
+        {
+            var subPackets = packetInfo.Children;
+
+            if (subPackets.Any())
+            {
+                switch (packetInfo.TypeId)
+                {
+                    case 0:
+                        {
+                            return subPackets.Sum(c => CountVals(c));
+                        }
+                    case 1:
+                        {
+                            return subPackets.Aggregate(1L, (sum, b) => sum * CountVals(b));
+                        }
+                    case 2:
+                        {
+                            return subPackets.Min(c => CountVals(c));
+                        }
+                    case 3:
+                        {
+                            return subPackets.Max(c => CountVals(c));
+                        }
+                    case 5:
+                        {
+                            return Convert.ToInt64(CountVals(subPackets[0]) > CountVals(subPackets[1]));
+                        }
+                    case 6:
+                        {
+                            return Convert.ToInt64(CountVals(subPackets[0]) < CountVals(subPackets[1]));
+                        }
+                    case 7:
+                        {
+                            var x = CountVals(subPackets[0]);
+                            var y = CountVals(subPackets[1]);
+                            return Convert.ToInt64(x == y);
+                        }
+                }
+            }
+
+            return packetInfo.Value;
         }
     }
 }
