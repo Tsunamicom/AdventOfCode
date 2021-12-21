@@ -18,9 +18,9 @@ namespace AdventOfCode.Challenges.Resolution
             var averageCeiling = Math.Ceiling(positions.Average());
 
             var minCost = Math.Min(
-                positions.Select(c => Math.Abs(c - averageFloor)).Sum(c => c * (c + 1) / 2), 
+                positions.Select(c => Math.Abs(c - averageFloor)).Sum(c => c * (c + 1) / 2),
                 positions.Select(c => Math.Abs(c - averageCeiling)).Sum(c => c * (c + 1) / 2));
-                
+
 
             return minCost.ToString();
         }
