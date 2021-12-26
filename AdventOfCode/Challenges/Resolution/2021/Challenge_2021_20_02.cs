@@ -61,7 +61,7 @@ namespace AdventOfCode.Challenges.Resolution
                 workingScanLine.Add(fillChar);
                 workingScanLine.AddRange(scanLine.ToList());
                 workingScanLine.Add(fillChar);
-                
+
                 workingCopy.Add(workingScanLine.ToList());
             }
 
