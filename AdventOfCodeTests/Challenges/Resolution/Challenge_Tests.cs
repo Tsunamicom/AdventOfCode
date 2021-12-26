@@ -497,21 +497,16 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         [TestMethod(), TestCategory("2021"), TestCategory("Day1")]
         public void ResolveChallenge_2021_25_01_Test()
         {
-            Assert.Inconclusive("TBD");
             var challenge = new Challenge_2021_25_01();
             var result = challenge.ResolveChallenge(_TestData_2021_25);
 
-            Assert.AreEqual("", result);
+            Assert.AreEqual("58", result);
         }
 
         [TestMethod(), TestCategory("2021"), TestCategory("Day2")]
         public void ResolveChallenge_2021_25_02_Test()
         {
-            Assert.Inconclusive("TBD");
-            var challenge = new Challenge_2021_25_02();
-            var result = challenge.ResolveChallenge(_TestData_2021_25);
-
-            Assert.AreEqual("", result);
+            // There is no Part 2.  Need to complete all the previous tasks.
         }
     }
 }

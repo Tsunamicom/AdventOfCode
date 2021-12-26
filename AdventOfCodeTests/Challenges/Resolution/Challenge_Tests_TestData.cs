@@ -313,7 +313,15 @@ namespace AdventOfCode.Challenges.Resolution.Tests
 
         private List<string> _TestData_2021_25 = new()
         {
-
+            "v...>>.vv>",
+            ".vv>>.vv..",
+            ">>.>v>...v",
+            ">>v>>.>.v.",
+            "v>v.vv.v..",
+            ">.>>..v...",
+            ".vv..>.>v.",
+            "v.v..>>v.v",
+            "....v..v.>",
         };
     }
 }
