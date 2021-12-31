@@ -267,7 +267,8 @@ namespace AdventOfCode.Challenges.Resolution.Tests
 
         private List<string> _TestData_2021_21 = new()
         {
-
+            "Player 1 starting position: 4",
+            "Player 2 starting position: 8"
         };
 
         private List<string> _TestData_2021_22 = new()
