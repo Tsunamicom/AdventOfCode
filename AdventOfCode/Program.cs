@@ -12,8 +12,9 @@ namespace AdventOfCode
         {
             var challenges = new Dictionary<string, IChallenge>();
 
-            foreach (var c in ChallengeConfiguration.Challenges2020) challenges.TryAdd(c.Key, c.Value);
-            foreach (var c in ChallengeConfiguration.Challenges2021) challenges.TryAdd(c.Key, c.Value);
+            //foreach (var c in ChallengeConfiguration.Challenges2020) challenges.TryAdd(c.Key, c.Value);
+            //foreach (var c in ChallengeConfiguration.Challenges2021) challenges.TryAdd(c.Key, c.Value);
+            foreach (var c in ChallengeConfiguration.Challenges2022) challenges.TryAdd(c.Key, c.Value);
 
             // Allow for selection via console for specific or array of tests to run
             var selectedChallenges = args.Count() == 0

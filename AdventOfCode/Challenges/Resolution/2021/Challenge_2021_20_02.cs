@@ -61,14 +61,14 @@ namespace AdventOfCode.Challenges.Resolution
                 workingScanLine.Add(fillChar);
                 workingScanLine.AddRange(scanLine.ToList());
                 workingScanLine.Add(fillChar);
-                
+
                 workingCopy.Add(workingScanLine.ToList());
             }
 
             // Pad Bottom
             workingCopy.Add(new string(fillChar, initialMap[0].Count + 2).Select(c => c).ToList());
 
-            return workingCopy;
+            return await Task.FromResult(workingCopy).ConfigureAwait(false);
         }
 
         private async Task<List<List<char>>> GenerateEnhancedMap(List<List<char>> initialMap, char fillChar)
@@ -151,7 +151,7 @@ namespace AdventOfCode.Challenges.Resolution
             var sbStr = sb.ToString();
             var result = Convert.ToInt32(sbStr, 2);
 
-            return result;
+            return await Task.FromResult(result).ConfigureAwait(false);
         }
     }
 }
