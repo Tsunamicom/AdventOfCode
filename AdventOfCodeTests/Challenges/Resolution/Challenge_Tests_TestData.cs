@@ -309,7 +309,43 @@ namespace AdventOfCode.Challenges.Resolution.Tests
 
         private List<string> _TestData_2021_24 = new()
         {
+            "inp w",
+            "mul x 0",
+            "add x z",
+            "mod x 26",
+            "div z 1",
+            "add x 15",
+            "eql x w",
+            "eql x 0",
+            "mul y 0",
+            "add y 25",
+            "mul y x",
+            "add y 1",
+            "mul z y",
+            "mul y 0",
+            "add y w",
+            "add y 15",
+            "mul y x",
+            "add z y",
 
+            "inp w",
+            "mul x 0",
+            "add x z",
+            "mod x 26",
+            "div z 1",
+            "add x 15",
+            "eql x w",
+            "eql x 0",
+            "mul y 0",
+            "add y 25",
+            "mul y x",
+            "add y 1",
+            "mul z y",
+            "mul y 0",
+            "add y w",
+            "add y 10",
+            "mul y x",
+            "add z y",
         };
 
         private List<string> _TestData_2021_25 = new()

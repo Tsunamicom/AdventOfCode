@@ -1,5 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace AdventOfCode.Challenges.Resolution.Tests
 {
@@ -418,7 +420,7 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         [TestMethod(), TestCategory("2021"), TestCategory("Day1")]
         public void ResolveChallenge_2021_21_01_Test()
         {
-            
+
             var challenge = new Challenge_2021_21_01();
             var result = challenge.ResolveChallenge(_TestData_2021_21);
 
