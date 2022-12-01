@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace AdventOfCode.Challenges.Resolution
 {
@@ -10,7 +11,20 @@ namespace AdventOfCode.Challenges.Resolution
 
         public string ResolveChallenge(List<string> data)
         {
-            return "Not Implemented Yet";
+            var maxCals = 0;
+            var carriedCals = 0;
+            for (int i = 0; i < data.Count; i++)
+            {
+                _ = int.TryParse(data[i], out var currCals);
+                carriedCals += currCals;
+                if (string.IsNullOrEmpty(data[i]) || data.Count-1 == i)
+                {
+                    maxCals = Math.Max(maxCals, carriedCals);
+                    carriedCals = 0;
+                }
+            }
+
+            return maxCals.ToString();
         }
     }
 }
