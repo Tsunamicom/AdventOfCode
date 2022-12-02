@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace AdventOfCode.Challenges.Resolution
@@ -21,7 +20,7 @@ namespace AdventOfCode.Challenges.Resolution
                 if (string.IsNullOrEmpty(data[i]) || data.Count - 1 == i)
                 {
                     topCalories.Add(carriedCals);
-                    if(topCalories.Count > 3)
+                    if (topCalories.Count > 3)
                     {
                         topCalories.Remove(topCalories.Min());
                     }

@@ -17,7 +17,7 @@ namespace AdventOfCode.Challenges.Resolution
             {
                 _ = int.TryParse(data[i], out var currCals);
                 carriedCals += currCals;
-                if (string.IsNullOrEmpty(data[i]) || data.Count-1 == i)
+                if (string.IsNullOrEmpty(data[i]) || data.Count - 1 == i)
                 {
                     maxCals = Math.Max(maxCals, carriedCals);
                     carriedCals = 0;

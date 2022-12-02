@@ -23,7 +23,9 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         };
         private List<string> _TestData_2022_02 = new()
         {
-
+            "A Y",
+            "B X",
+            "C Z",
         };
         private List<string> _TestData_2022_03 = new()
         {
