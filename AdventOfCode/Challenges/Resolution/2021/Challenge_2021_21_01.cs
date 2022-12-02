@@ -57,7 +57,7 @@ namespace AdventOfCode.Challenges.Resolution
             var minScore = playerData.Min(c => c.TotalScore);
 
             var returnValue = minScore * totalDiceRolls;
-            
+
 
             return $"{returnValue}";
         }

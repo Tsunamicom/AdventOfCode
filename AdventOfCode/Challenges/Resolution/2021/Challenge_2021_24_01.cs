@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace AdventOfCode.Challenges.Resolution
 {
@@ -76,7 +75,7 @@ namespace AdventOfCode.Challenges.Resolution
         {
             var instructionsAll = data.Select(c => new Instruction(c)).ToList();
 
-            
+
 
             var numGen = NumberGenerator(descending: true);
 
@@ -151,7 +150,7 @@ namespace AdventOfCode.Challenges.Resolution
                         }
                     case "div":
                         {
-                            if(instructionActionValue == 0) return -1;
+                            if (instructionActionValue == 0) return -1;
                             variableValueDictionary[instruction.Variable] /= instructionActionValue;
                             break;
                         }
@@ -171,7 +170,7 @@ namespace AdventOfCode.Challenges.Resolution
                             throw new InvalidOperationException($"Unhandled Instruction Action: {instruction.Action}");
                         }
 
-                        
+
                 }
                 if (variableValueDictionary['z'] > 10000) return -1;
             }
