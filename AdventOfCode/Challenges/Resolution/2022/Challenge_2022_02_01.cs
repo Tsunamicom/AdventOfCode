@@ -20,8 +20,6 @@ namespace AdventOfCode.Challenges.Resolution
         {
             var rounds = data.Select(x => x.Split(' '));
 
-
-
             var handValues = new Dictionary<string, Hand>
             {
                 {"A", Hand.Rock },
