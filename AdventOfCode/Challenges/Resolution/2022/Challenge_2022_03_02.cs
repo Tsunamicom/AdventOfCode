@@ -17,8 +17,6 @@ namespace AdventOfCode.Challenges.Resolution
         {
             var prioritySum = 0;
 
-
-
             for (int i = 0; i < data.Count; i += 3)
             {
                 var ruckSackOne = data[i].ToHashSet();
