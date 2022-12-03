@@ -25,7 +25,8 @@ namespace AdventOfCode.Challenges.Resolution
 
                 var similarValue = ruckSackOne
                     .Intersect(ruckSackTwo)
-                    .Intersect(ruckSackThree).First();
+                    .Intersect(ruckSackThree)
+                    .Single(); // Assumptions by data
 
                 var priorityScore = alphabet.IndexOf(similarValue) + 1;
                 prioritySum += priorityScore;

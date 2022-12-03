@@ -26,7 +26,9 @@ namespace AdventOfCode.Challenges.Resolution
                 var firstHalf = ruckSackList.GetRange(0, mid).ToHashSet();
                 var secondHalf = ruckSackList.GetRange(mid, ruckSackList.Count - mid).ToHashSet();
 
-                var similarValue = firstHalf.Intersect(secondHalf).First();
+                var similarValue = firstHalf
+                    .Intersect(secondHalf)
+                    .Single(); // Assumptions by data
 
                 var priorityScore = alphabet.IndexOf(similarValue) + 1;
 
