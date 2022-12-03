@@ -11,7 +11,7 @@ namespace AdventOfCode.Challenges.Resolution
 
         public int ChallengePart => 2;
 
-        string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
         public string ResolveChallenge(List<string> data)
         {
