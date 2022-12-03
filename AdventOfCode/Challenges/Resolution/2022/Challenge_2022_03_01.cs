@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace AdventOfCode.Challenges.Resolution
 {
@@ -10,9 +11,29 @@ namespace AdventOfCode.Challenges.Resolution
 
         public int ChallengePart => 1;
 
+        string alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
         public string ResolveChallenge(List<string> data)
         {
-            return "Not Implemented Yet";
+            var prioritySum = 0;
+
+            foreach (var rucksack in data)
+            {
+                var mid = rucksack.Length / 2; // lower bound
+
+                var ruckSackList = rucksack.ToCharArray().ToList();
+
+                var firstHalf = ruckSackList.GetRange(0, mid).ToHashSet();
+                var secondHalf = ruckSackList.GetRange(mid, ruckSackList.Count - mid).ToHashSet();
+
+                var similarValue = firstHalf.Intersect(secondHalf).First();
+
+                var priorityScore = alphabet.IndexOf(similarValue) + 1;
+
+                prioritySum += priorityScore;
+            }
+
+            return prioritySum.ToString();
         }
     }
 }
