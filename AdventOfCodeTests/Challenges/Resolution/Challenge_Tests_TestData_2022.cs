@@ -29,7 +29,12 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         };
         private List<string> _TestData_2022_03 = new()
         {
-
+            "vJrwpWtwJgWrhcsFMMfFFhFp",
+            "jqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL",
+            "PmmdzqPrVvPwwTWBwg",
+            "wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn",
+            "ttgJtRGJQctTZtZT",
+            "CrZsJsPPZsGzwwsLwLmpwMDw",
         };
         private List<string> _TestData_2022_04 = new()
         {
