@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 namespace AdventOfCode.Challenges.Resolution
@@ -24,8 +23,8 @@ namespace AdventOfCode.Challenges.Resolution
                 var upperBoundPair1 = int.Parse(pair[0][1]);
                 var upperBoundPair2 = int.Parse(pair[1][1]);
 
-                if ((lowerBoundPair1 < lowerBoundPair2) && 
-                    (upperBoundPair1 < upperBoundPair2) && 
+                if ((lowerBoundPair1 < lowerBoundPair2) &&
+                    (upperBoundPair1 < upperBoundPair2) &&
                     (upperBoundPair1 < lowerBoundPair2))
                     continue;
 

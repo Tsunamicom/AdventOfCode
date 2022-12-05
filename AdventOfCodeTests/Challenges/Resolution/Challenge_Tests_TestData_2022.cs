@@ -44,11 +44,19 @@ namespace AdventOfCode.Challenges.Resolution.Tests
             "2-8,3-7",
             "6-6,4-6",
             "2-6,4-8",
-            
+
         };
         private List<string> _TestData_2022_05 = new()
         {
-
+            "    [D]",
+            "[N] [C]",
+            "[Z] [M] [P]",
+            " 1   2   3",
+            "",
+            "move 1 from 2 to 1",
+            "move 3 from 1 to 3",
+            "move 2 from 2 to 1",
+            "move 1 from 1 to 2",
         };
         private List<string> _TestData_2022_06 = new()
         {
