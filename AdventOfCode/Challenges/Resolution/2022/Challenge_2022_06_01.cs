@@ -12,24 +12,16 @@ namespace AdventOfCode.Challenges.Resolution
         public string ResolveChallenge(List<string> data)
         {
             var datastream = data.Single();
-
             var lookBackCount = 4;
 
-            var compareQueue = new Queue<char>();
-
-            // Initialize Queue
-            for (int i = 0; i < lookBackCount; i++)
+            for (int i = 0; i < datastream.Length - lookBackCount; i++)
             {
-                compareQueue.Enqueue(datastream[i]);
-            }
-
-            for (int i = lookBackCount - 1; i < datastream.Length; i++)
-            {
-                if (compareQueue.Distinct().Count() == lookBackCount)
-                    return (i + 1).ToString();
-
-                compareQueue.Dequeue();
-                compareQueue.Enqueue(datastream[i + 1]);
+                if (datastream
+                    .Skip(i)
+                    .Take(lookBackCount)
+                    .Distinct()
+                    .Count() == lookBackCount)
+                    return (i + lookBackCount).ToString();
             }
 
             return "Not Found";
