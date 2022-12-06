@@ -60,7 +60,7 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         };
         private List<string> _TestData_2022_06 = new()
         {
-
+            "" // Not used
         };
         private List<string> _TestData_2022_07 = new()
         {

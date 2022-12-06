@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace AdventOfCode.Challenges.Resolution
 {
@@ -10,7 +11,20 @@ namespace AdventOfCode.Challenges.Resolution
 
         public string ResolveChallenge(List<string> data)
         {
-            return "Not Implemented Yet";
+            var datastream = data.Single();
+            var lookBackCount = 14;
+
+            for (int i = 0; i < datastream.Length - lookBackCount; i++)
+            {
+                if (datastream
+                    .Skip(i)
+                    .Take(lookBackCount)
+                    .Distinct()
+                    .Count() == lookBackCount)
+                    return (i + lookBackCount).ToString();
+            }
+
+            return "Not Found";
         }
     }
 }

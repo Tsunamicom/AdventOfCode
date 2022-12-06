@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
 
 namespace AdventOfCode.Challenges.Resolution.Tests
 {
@@ -97,21 +98,34 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         [TestMethod(), TestCategory("2022"), TestCategory("Day1")]
         public void ResolveChallenge_2022_06_01_Test()
         {
-            Assert.Inconclusive("TBD");
             var challenge = new Challenge_2022_06_01();
-            var result = challenge.ResolveChallenge(_TestData_2022_06);
 
-            Assert.AreEqual("", result);
+            var result1 = challenge.ResolveChallenge(new List<string>() { "bvwbjplbgvbhsrlpgdmjqwftvncz" });
+            var result2 = challenge.ResolveChallenge(new List<string>() { "nppdvjthqldpwncqszvftbrmjlhg" });
+            var result3 = challenge.ResolveChallenge(new List<string>() { "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg" });
+            var result4 = challenge.ResolveChallenge(new List<string>() { "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw" });
+
+            Assert.AreEqual("5", result1);
+            Assert.AreEqual("6", result2);
+            Assert.AreEqual("10", result3);
+            Assert.AreEqual("11", result4);
         }
 
         [TestMethod(), TestCategory("2022"), TestCategory("Day2")]
         public void ResolveChallenge_2022_06_02_Test()
         {
-            Assert.Inconclusive("TBD");
             var challenge = new Challenge_2022_06_02();
-            var result = challenge.ResolveChallenge(_TestData_2022_06);
+            var result1 = challenge.ResolveChallenge(new List<string>() { "mjqjpqmgbljsphdztnvjfqwrcgsmlb" });
+            var result2 = challenge.ResolveChallenge(new List<string>() { "bvwbjplbgvbhsrlpgdmjqwftvncz" });
+            var result3 = challenge.ResolveChallenge(new List<string>() { "nppdvjthqldpwncqszvftbrmjlhg" });
+            var result4 = challenge.ResolveChallenge(new List<string>() { "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg" });
+            var result5 = challenge.ResolveChallenge(new List<string>() { "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw" });
 
-            Assert.AreEqual("", result);
+            Assert.AreEqual("19", result1);
+            Assert.AreEqual("23", result2);
+            Assert.AreEqual("23", result3);
+            Assert.AreEqual("29", result4);
+            Assert.AreEqual("26", result5);
         }
 
         [TestMethod(), TestCategory("2022"), TestCategory("Day1")]
