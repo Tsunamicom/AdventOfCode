@@ -90,7 +90,11 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         };
         private List<string> _TestData_2022_08 = new()
         {
-
+            "30373",
+            "25512",
+            "65332",
+            "33549",
+            "35390",
         };
         private List<string> _TestData_2022_09 = new()
         {
