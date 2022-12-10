@@ -185,21 +185,34 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         [TestMethod(), TestCategory("2022"), TestCategory("Day1")]
         public void ResolveChallenge_2022_10_01_Test()
         {
-            Assert.Inconclusive("TBD");
             var challenge = new Challenge_2022_10_01();
-            var result = challenge.ResolveChallenge(_TestData_2022_10);
+            var result = challenge.ResolveChallenge(_TestData_2022_10_01_02);
 
-            Assert.AreEqual("", result);
+            Assert.AreEqual("13140", result);
         }
 
         [TestMethod(), TestCategory("2022"), TestCategory("Day2")]
         public void ResolveChallenge_2022_10_02_Test()
         {
-            Assert.Inconclusive("TBD");
             var challenge = new Challenge_2022_10_02();
-            var result = challenge.ResolveChallenge(_TestData_2022_10);
+            var result = challenge.ResolveChallenge(_TestData_2022_10_01_02);
 
-            Assert.AreEqual("", result);
+            var resultList = result.Split(',');
+
+            var expectedOutput = new List<string>()
+            {
+                "##..##..##..##..##..##..##..##..##..##..",
+                "###...###...###...###...###...###...###.",
+                "####....####....####....####....####....",
+                "#####.....#####.....#####.....#####.....",
+                "######......######......######......####",
+                "#######.......#######.......#######.....",
+            };
+
+            for (int i = 0; i < expectedOutput.Count; i++)
+            {
+                Assert.AreEqual(expectedOutput[i], resultList[i], $"Index {i}");
+            }
         }
 
         [TestMethod(), TestCategory("2022"), TestCategory("Day1")]
