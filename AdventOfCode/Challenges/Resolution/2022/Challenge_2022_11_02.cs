@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 
 namespace AdventOfCode.Challenges.Resolution
 {
@@ -10,7 +13,130 @@ namespace AdventOfCode.Challenges.Resolution
 
         public string ResolveChallenge(List<string> data)
         {
-            return "Not Implemented Yet";
+            var rounds = 10000;
+            var monkeys = ParseStartingMonkeys(data);
+
+            // Find a common divisor
+            var divisibleFactor = monkeys.Select(c => c.TestDivisibleVal).Aggregate((a, b) => a * b);
+
+            for (int round = 0; round < rounds; round++)
+            {
+                for (int monkey = 0; monkey < monkeys.Count; monkey++)
+                {
+                    var itemCountStart = monkeys[monkey].HeldItemWorryLevels.Count;
+                    for (int itemCnt = 0; itemCnt < itemCountStart; itemCnt++)
+                    {
+                        monkeys[monkey].inspectedItemsCount++;
+                        var inspectedItem = monkeys[monkey].HeldItemWorryLevels.Dequeue();
+
+                        //   Calculate new Worry Level by Monkey Operation.
+                        var operation = monkeys[monkey].Operation.Replace("old", inspectedItem.ToString());
+                        long worryItem = Compute(operation);
+
+                        //   Reduce the worryItem value by the common divisor to prevent overflow
+                        worryItem %= divisibleFactor;
+
+                        //   Run Test
+                        int worryItemThrowMonkey = worryItem % monkeys[monkey].TestDivisibleVal == 0
+                            ? monkeys[monkey].TestTrueThrowMonkey
+                            : monkeys[monkey].TestFalseThrowMonkey;
+
+                        monkeys[worryItemThrowMonkey].HeldItemWorryLevels.Enqueue(worryItem);
+                    }
+                }
+                //Debug.WriteLine($"Round: {round+1}");
+            }
+
+            var topTwoActiveMonkeyScore = monkeys
+                .Select(c => c.inspectedItemsCount)
+                .OrderByDescending(c => c)
+                .Take(2)
+                .Aggregate((a, b) => a * b);
+
+            return topTwoActiveMonkeyScore.ToString();
+        }
+
+        private class Monkey
+        {
+            internal long inspectedItemsCount = 0;
+            internal Queue<long> HeldItemWorryLevels { get; set; } = new Queue<long>();
+            internal string Operation { get; set; }
+            internal int TestDivisibleVal { get; set; }
+            internal int TestTrueThrowMonkey { get; set; }
+            internal int TestFalseThrowMonkey { get; set; }
+        }
+
+        private long Compute(string operation)
+        {
+            var operationVals = operation.Split(' ');
+            if (operationVals[1] == "*")
+            {
+                return long.Parse(operationVals[0]) * long.Parse(operationVals[2]);
+            }
+            if (operationVals[1] == "+")
+            {
+                return long.Parse(operationVals[0]) + long.Parse(operationVals[2]);
+            }
+            throw new InvalidOperationException($"{operationVals[1]} is not being handled via Compute.");
+        }
+
+        private List<Monkey> ParseStartingMonkeys(List<string> data)
+        {
+            var itemsStr = "  Starting items: ";
+            var operationStr = "  Operation: new = ";
+            var testStr = "  Test: divisible by ";
+            var testTrueStr = "    If true: throw to monkey ";
+            var testFalseStr = "    If false: throw to monkey ";
+
+            List<Monkey> monkeys = new();
+
+            var currentParseMonkey = new Monkey();
+            foreach (var inspection in data)
+            {
+                if (string.IsNullOrEmpty(inspection))
+                {
+                    // Make Copy of Current Monkey
+                    monkeys.Add(new Monkey()
+                    {
+                        HeldItemWorryLevels = new Queue<long>(currentParseMonkey.HeldItemWorryLevels),
+                        Operation = currentParseMonkey.Operation,
+                        TestDivisibleVal = currentParseMonkey.TestDivisibleVal,
+                        TestTrueThrowMonkey = currentParseMonkey.TestTrueThrowMonkey,
+                        TestFalseThrowMonkey = currentParseMonkey.TestFalseThrowMonkey
+                    });
+
+                    currentParseMonkey = new Monkey();
+                    continue;
+                }
+
+                if (inspection.Contains(itemsStr))
+                {
+                    currentParseMonkey.HeldItemWorryLevels =
+                        new Queue<long>(inspection
+                        .Replace(itemsStr, null)
+                        .Split(',')
+                        .Select(c => long.Parse(c)));
+                }
+                else if (inspection.Contains(operationStr))
+                {
+                    currentParseMonkey.Operation = inspection.Replace(operationStr, null);
+                }
+                else if (inspection.Contains(testStr))
+                {
+                    currentParseMonkey.TestDivisibleVal = int.Parse(inspection.Replace(testStr, null));
+                }
+                else if (inspection.Contains(testTrueStr))
+                {
+                    currentParseMonkey.TestTrueThrowMonkey = int.Parse(inspection.Replace(testTrueStr, null));
+                }
+                else if (inspection.Contains(testFalseStr))
+                {
+                    currentParseMonkey.TestFalseThrowMonkey = int.Parse(inspection.Replace(testFalseStr, null));
+                }
+            }
+            monkeys.Add(currentParseMonkey); // Add last monkey
+
+            return monkeys;
         }
     }
 }

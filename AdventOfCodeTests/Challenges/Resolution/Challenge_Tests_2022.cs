@@ -218,21 +218,19 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         [TestMethod(), TestCategory("2022"), TestCategory("Day1")]
         public void ResolveChallenge_2022_11_01_Test()
         {
-            Assert.Inconclusive("TBD");
             var challenge = new Challenge_2022_11_01();
             var result = challenge.ResolveChallenge(_TestData_2022_11);
 
-            Assert.AreEqual("", result);
+            Assert.AreEqual("10605", result);
         }
 
         [TestMethod(), TestCategory("2022"), TestCategory("Day2")]
         public void ResolveChallenge_2022_11_02_Test()
         {
-            Assert.Inconclusive("TBD");
             var challenge = new Challenge_2022_11_02();
             var result = challenge.ResolveChallenge(_TestData_2022_11);
 
-            Assert.AreEqual("", result);
+            Assert.AreEqual("2713310158", result);
         }
 
         [TestMethod(), TestCategory("2022"), TestCategory("Day1")]
