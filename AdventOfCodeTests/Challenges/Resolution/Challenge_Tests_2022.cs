@@ -351,6 +351,24 @@ namespace AdventOfCode.Challenges.Resolution.Tests
             Assert.AreEqual("1514285714288", result);
         }
 
+        //[TestMethod(), TestCategory("2022"), TestCategory("Day1")]
+        //public void ResolveChallenge_2022_17_01_alt_Test()
+        //{
+        //    var challenge = new Challenge_2022_17_01();
+        //    var result = challenge.ResolveChallenge(_TestData_2022_17_02);
+
+        //    Assert.AreEqual("14", result);
+        //}
+
+        //[TestMethod(), TestCategory("2022"), TestCategory("Day2")]
+        //public void ResolveChallenge_2022_17_02_alt_Test()
+        //{
+        //    var challenge = new Challenge_2022_17_02();
+        //    var result = challenge.ResolveChallenge(_TestData_2022_17_02);
+
+        //    Assert.AreEqual("14", result);
+        //}
+
         [TestMethod(), TestCategory("2022"), TestCategory("Day1")]
         public void ResolveChallenge_2022_18_01_Test()
         {

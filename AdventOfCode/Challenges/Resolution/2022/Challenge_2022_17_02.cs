@@ -53,17 +53,33 @@ namespace AdventOfCode.Challenges.Resolution
                     var numberOfRocksRemainder = numberOfRocks % cycleRocks;
                     var rockCountRemainder = rockCount % cycleRocks;
 
+                    var rocksLeft = numberOfRocks - rockCount;
+
+                    var hasRemainingCycle = rocksLeft > cycleRocks;
+
                     // Make sure we have an even distribution
-                    if (numberOfRocksRemainder != 0 && numberOfRocksRemainder == rockCountRemainder)
+                    if (hasRemainingCycle && numberOfRocksRemainder == rockCountRemainder)
                     {
                         // Cycle Found
                         var cycleHeight = maxHeight - cycleDictionary[cycleKey].Item2;
-                        var rocksLeft = numberOfRocks - rockCount;
+                        
+
+                        long lastItemValue = 0;
+                        var attachLastCycle = false;
+                        if (hasRemainingCycle)
+                        {
+                            attachLastCycle = true;
+                            lastItemValue = cycleDictionary[cycleKey].Item2;
+                        }
+                        else
+                        {
+                            lastItemValue = cycleDictionary.Last().Value.Item2;
+                        }
 
                         // Determine how many cycles are left, make sure to add the currently calculated one.
-                        var cyclesLeft = (rocksLeft / cycleRocks) + 1;
+                        var cyclesLeft = (rocksLeft / cycleRocks) + (attachLastCycle ? 1 : 0);
 
-                        var expectedElevation = (cycleHeight * cyclesLeft) + cycleDictionary[cycleKey].Item2;
+                        var expectedElevation = (cycleHeight * cyclesLeft) + lastItemValue;
                         finalResult = expectedElevation;
                         break;
                     }

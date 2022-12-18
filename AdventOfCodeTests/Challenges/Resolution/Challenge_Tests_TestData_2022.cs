@@ -357,6 +357,10 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         {
             ">>><<><>><<<>><>>><<<>>><<<><<<>><>><<>>"
         };
+        private List<string> _TestData_2022_17_02 = new()
+        {
+            ">>>><<<<<>>><<>><<<><>>><>"
+        };
         private List<string> _TestData_2022_18 = new()
         {
 
