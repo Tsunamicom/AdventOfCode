@@ -240,7 +240,7 @@ namespace AdventOfCode.Challenges.Resolution.Tests
             var challenge = new Challenge_2022_12_01();
             var result = challenge.ResolveChallenge(_TestData_2022_12);
 
-            Assert.AreEqual("", result);
+            Assert.AreEqual("31", result);
         }
 
         [TestMethod(), TestCategory("2022"), TestCategory("Day2")]
@@ -260,7 +260,7 @@ namespace AdventOfCode.Challenges.Resolution.Tests
             var challenge = new Challenge_2022_13_01();
             var result = challenge.ResolveChallenge(_TestData_2022_13);
 
-            Assert.AreEqual("", result);
+            Assert.AreEqual("13", result);
         }
 
         [TestMethod(), TestCategory("2022"), TestCategory("Day2")]
@@ -336,21 +336,19 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         [TestMethod(), TestCategory("2022"), TestCategory("Day1")]
         public void ResolveChallenge_2022_17_01_Test()
         {
-            Assert.Inconclusive("TBD");
             var challenge = new Challenge_2022_17_01();
             var result = challenge.ResolveChallenge(_TestData_2022_17);
 
-            Assert.AreEqual("", result);
+            Assert.AreEqual("3068", result);
         }
 
         [TestMethod(), TestCategory("2022"), TestCategory("Day2")]
         public void ResolveChallenge_2022_17_02_Test()
         {
-            Assert.Inconclusive("TBD");
             var challenge = new Challenge_2022_17_02();
             var result = challenge.ResolveChallenge(_TestData_2022_17);
 
-            Assert.AreEqual("", result);
+            Assert.AreEqual("1514285714288", result);
         }
 
         [TestMethod(), TestCategory("2022"), TestCategory("Day1")]

@@ -309,11 +309,37 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         };
         private List<string> _TestData_2022_12 = new()
         {
-
+            "Sabqponm",
+            "abcryxxl",
+            "accszExk",
+            "acctuvwj",
+            "abdefghi",
         };
         private List<string> _TestData_2022_13 = new()
         {
-
+            "[1,1,3,1,1]",
+            "[1,1,5,1,1]",
+            "",
+            "[[1],[2,3,4]]",
+            "[[1],4]",
+            "",
+            "[9]",
+            "[[8,7,6]]",
+            "",
+            "[[4,4],4,4]",
+            "[[4,4],4,4,4]",
+            "",
+            "[7,7,7,7]",
+            "[7,7,7]",
+            "",
+            "[]",
+            "[3]",
+            "",
+            "[[[]]]",
+            "[[]]",
+            "",
+            "[1,[2,[3,[4,[5,6,7]]]],8,9]",
+            "[1,[2,[3,[4,[5,6,0]]]],8,9]",
         };
         private List<string> _TestData_2022_14 = new()
         {
@@ -329,7 +355,7 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         };
         private List<string> _TestData_2022_17 = new()
         {
-
+            ">>><<><>><<<>><>>><<<>>><<<><<<>><>><<>>"
         };
         private List<string> _TestData_2022_18 = new()
         {
