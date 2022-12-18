@@ -7,7 +7,7 @@ namespace AdventOfCode.Challenges.Resolution
     public class Challenge_2022_17_01 : IChallengeResolution
     {
         public int ChallengeYear => 2022;
-        public int ChallengeDay => 14;
+        public int ChallengeDay => 17;
         public int ChallengePart => 1;
 
         public string ResolveChallenge(List<string> data)
