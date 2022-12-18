@@ -50,8 +50,11 @@ namespace AdventOfCode.Challenges.Resolution
                     // Potential Candidate found
                     var cycleRocks = rockCount - cycleDictionary[cycleKey].Item1;
 
+                    var numberOfRocksRemainder = numberOfRocks % cycleRocks;
+                    var rockCountRemainder = rockCount % cycleRocks;
+
                     // Make sure we have an even distribution
-                    if (numberOfRocks % cycleRocks == rockCount % cycleRocks)
+                    if (numberOfRocksRemainder != 0 && numberOfRocksRemainder == rockCountRemainder)
                     {
                         // Cycle Found
                         var cycleHeight = maxHeight - cycleDictionary[cycleKey].Item2;
@@ -97,10 +100,10 @@ namespace AdventOfCode.Challenges.Resolution
                     }
 
                     // Cycle the jetPattern index back to either next value or back to 0
-                    currentJetPatternPosition = currentJetPatternPosition + 1 >= jetPattern.Count
+                    var newJetPatternPosition = ((currentJetPatternPosition + 1) >= jetPattern.Count)
                         ? 0
-                        : currentJetPatternPosition + 1;
-
+                        : (currentJetPatternPosition + 1);
+                    currentJetPatternPosition = newJetPatternPosition;
                 }
 
                 foreach (var point in rock.Positions)
@@ -114,7 +117,8 @@ namespace AdventOfCode.Challenges.Resolution
                 currentMap = currentMap.TakeLast(100).ToHashSet();
 
             }
-
+            maxHeight = currentMap.Max(c => c.Item2);
+            if (finalResult == 0) finalResult = maxHeight;
             return finalResult.ToString();
         }
 
