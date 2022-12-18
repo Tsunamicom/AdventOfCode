@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 namespace AdventOfCode.Challenges.Resolution
@@ -38,20 +37,24 @@ namespace AdventOfCode.Challenges.Resolution
 
             for (int rockCount = 0; rockCount < numberOfRocks; rockCount++)
             {
-                if (rockCount % 10000 == 0) Debug.WriteLine(rockCount);
-
                 var cycleKey = (currentJetPatternPosition, currentRockType);
                 maxHeight = currentMap.Max(c => c.Item2);
 
-
-                // Try to determine whether there is a 
+                // Try to determine whether there is a cycle
+                // by detecting whether we've seen a specific 
+                // jetStream index and rockType.  This would mean
+                // that we've gone full circle and will just continue
+                // to see the same patterns.
                 if (cycleDictionary.ContainsKey(cycleKey))
                 {
                     // Potential Candidate found
                     var cycleRocks = rockCount - cycleDictionary[cycleKey].Item1;
 
+                    var numberOfRocksRemainder = numberOfRocks % cycleRocks;
+                    var rockCountRemainder = rockCount % cycleRocks;
+
                     // Make sure we have an even distribution
-                    if (numberOfRocks % cycleRocks == rockCount % cycleRocks)
+                    if (numberOfRocksRemainder != 0 && numberOfRocksRemainder == rockCountRemainder)
                     {
                         // Cycle Found
                         var cycleHeight = maxHeight - cycleDictionary[cycleKey].Item2;
@@ -97,10 +100,10 @@ namespace AdventOfCode.Challenges.Resolution
                     }
 
                     // Cycle the jetPattern index back to either next value or back to 0
-                    currentJetPatternPosition = currentJetPatternPosition + 1 >= jetPattern.Count
+                    var newJetPatternPosition = ((currentJetPatternPosition + 1) >= jetPattern.Count)
                         ? 0
-                        : currentJetPatternPosition + 1;
-
+                        : (currentJetPatternPosition + 1);
+                    currentJetPatternPosition = newJetPatternPosition;
                 }
 
                 foreach (var point in rock.Positions)
@@ -114,7 +117,8 @@ namespace AdventOfCode.Challenges.Resolution
                 currentMap = currentMap.TakeLast(100).ToHashSet();
 
             }
-
+            maxHeight = currentMap.Max(c => c.Item2);
+            if (finalResult == 0) finalResult = maxHeight;
             return finalResult.ToString();
         }
 
