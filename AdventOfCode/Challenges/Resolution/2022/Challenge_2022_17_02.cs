@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 
 namespace AdventOfCode.Challenges.Resolution
@@ -38,13 +37,14 @@ namespace AdventOfCode.Challenges.Resolution
 
             for (int rockCount = 0; rockCount < numberOfRocks; rockCount++)
             {
-                if (rockCount % 10000 == 0) Debug.WriteLine(rockCount);
-
                 var cycleKey = (currentJetPatternPosition, currentRockType);
                 maxHeight = currentMap.Max(c => c.Item2);
 
-
-                // Try to determine whether there is a 
+                // Try to determine whether there is a cycle
+                // by detecting whether we've seen a specific 
+                // jetStream index and rockType.  This would mean
+                // that we've gone full circle and will just continue
+                // to see the same patterns.
                 if (cycleDictionary.ContainsKey(cycleKey))
                 {
                     // Potential Candidate found
