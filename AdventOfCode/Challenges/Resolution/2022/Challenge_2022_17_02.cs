@@ -62,7 +62,7 @@ namespace AdventOfCode.Challenges.Resolution
                     {
                         // Cycle Found
                         var cycleHeight = maxHeight - cycleDictionary[cycleKey].Item2;
-                        
+
 
                         long lastItemValue = 0;
                         var attachLastCycle = false;
