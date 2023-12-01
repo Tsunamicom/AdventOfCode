@@ -1,0 +1,10 @@
+		[TestMethod(), TestCategory("@@YEAR@@"), TestCategory("Part@@PART@@")]
+        public void ResolveChallenge_@@YEAR@@_@@DAYSTR@@_@@PARTSTR@@_Test()
+        {
+			Assert.NotImplemented();
+            var challenge = new Challenge_@@YEAR@@_@@DAYSTR@@_@@PARTSTR@@();
+            var result = challenge.ResolveChallenge(_TestData_@@YEAR@@_@@DAYSTR@@);
+
+            Assert.AreEqual("Not Implemented", result);
+        }
+		

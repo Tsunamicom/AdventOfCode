@@ -371,7 +371,13 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         };
         private List<string> _TestData_2022_20 = new()
         {
-
+            "1",
+            "2",
+            "-3",
+            "3",
+            "-2",
+            "0",
+            "4"
         };
         private List<string> _TestData_2022_21 = new()
         {
