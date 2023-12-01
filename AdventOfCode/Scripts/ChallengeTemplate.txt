@@ -1,0 +1,17 @@
+using System;
+using System.Collections.Generic;
+
+namespace AdventOfCode.Challenges.Resolution
+{
+    public class Challenge_@@YEAR@@_@@DAYSTR@@_@@PARTSTR@@ : IChallengeResolution
+    {
+        public int ChallengeYear => @@YEAR@@;
+        public int ChallengeDay => @@DAY@@;
+        public int ChallengePart => @@PART@@;
+
+        public string ResolveChallenge(List<string> data)
+        {
+            return "Not Implemented Yet";
+        }
+    }
+}
