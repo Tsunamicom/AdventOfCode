@@ -71,11 +71,10 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         [TestMethod(), TestCategory("2023"), TestCategory("Part1")]
         public void ResolveChallenge_2023_05_01_Test()
         {
-            Assert.Inconclusive();
             var challenge = new Challenge_2023_05_01();
             var result = challenge.ResolveChallenge(_TestData_2023_05);
 
-            Assert.AreEqual("Not Implemented", result);
+            Assert.AreEqual("35", result);
         }
         [TestMethod(), TestCategory("2023"), TestCategory("Part2")]
         public void ResolveChallenge_2023_05_02_Test()
@@ -84,7 +83,7 @@ namespace AdventOfCode.Challenges.Resolution.Tests
             var challenge = new Challenge_2023_05_02();
             var result = challenge.ResolveChallenge(_TestData_2023_05);
 
-            Assert.AreEqual("Not Implemented", result);
+            Assert.AreEqual("46", result);
         }
         [TestMethod(), TestCategory("2023"), TestCategory("Part1")]
         public void ResolveChallenge_2023_06_01_Test()
