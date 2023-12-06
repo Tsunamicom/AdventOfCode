@@ -95,7 +95,8 @@ namespace AdventOfCode.Challenges.Resolution.Tests
 
         private List<string> _TestData_2023_06 = new()
         {
-
+            "Time:      7  15   30",
+            "Distance:  9  40  200"
         };
 
         private List<string> _TestData_2023_07 = new()
