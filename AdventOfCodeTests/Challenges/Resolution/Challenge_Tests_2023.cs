@@ -79,7 +79,7 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         [TestMethod(), TestCategory("2023"), TestCategory("Part2")]
         public void ResolveChallenge_2023_05_02_Test()
         {
-            Assert.Inconclusive();
+            //Assert.Inconclusive();
             var challenge = new Challenge_2023_05_02();
             var result = challenge.ResolveChallenge(_TestData_2023_05);
 
