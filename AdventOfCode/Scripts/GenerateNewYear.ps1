@@ -26,8 +26,6 @@ function CreateResolutionFiles()
         Replace("@@DAY@@", $Local:Day).
         Replace("@@PART@@", $Local:Part)
 
-        #$Local:CurrentCycleTemplate #| Out-File -FilePath "C:\Users\Tsuna\Desktop\AdventOfCode\Challenge_$Script:Year_$Local:Day_$Local:Part.cs"
-        
         $Local:FilePath = "$Script:BasePath\$Script:Year\Challenge`_$Script:Year`_$($Local:Day.ToString("00"))`_0$Local:Part.cs"
         $Local:FilePath
 
