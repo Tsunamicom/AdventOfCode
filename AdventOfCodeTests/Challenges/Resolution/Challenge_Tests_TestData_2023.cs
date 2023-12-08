@@ -108,9 +108,27 @@ namespace AdventOfCode.Challenges.Resolution.Tests
             "QQQJA 483"
         };
 
-        private List<string> _TestData_2023_08 = new()
+        private List<string> _TestData_2023_08_01 = new()
         {
+            "LLR",
+            "",
+            "AAA = (BBB, BBB)",
+            "BBB = (AAA, ZZZ)",
+            "ZZZ = (ZZZ, ZZZ)",
+        };
 
+        private List<string> _TestData_2023_08_02 = new()
+        {
+            "LR",
+            "",
+            "11A = (11B, XXX)",
+            "11B = (XXX, 11Z)",
+            "11Z = (11B, XXX)",
+            "22A = (22B, XXX)",
+            "22B = (22C, 22C)",
+            "22C = (22Z, 22Z)",
+            "22Z = (22B, 22B)",
+            "XXX = (XXX, XXX)",
         };
 
         private List<string> _TestData_2023_09 = new()
