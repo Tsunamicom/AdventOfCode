@@ -133,7 +133,9 @@ namespace AdventOfCode.Challenges.Resolution.Tests
 
         private List<string> _TestData_2023_09 = new()
         {
-
+            "0 3 6 9 12 15",
+            "1 3 6 10 15 21",
+            "10 13 16 21 30 45",
         };
 
         private List<string> _TestData_2023_10 = new()
