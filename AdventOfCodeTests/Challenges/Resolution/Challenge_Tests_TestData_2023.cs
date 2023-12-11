@@ -138,14 +138,36 @@ namespace AdventOfCode.Challenges.Resolution.Tests
             "10 13 16 21 30 45",
         };
 
-        private List<string> _TestData_2023_10 = new()
+        private List<string> _TestData_2023_10_01_01 = new()
         {
+            ".....",
+            ".S-7.",
+            ".|.|.",
+            ".L-J.",
+            "....."
+        };
 
+        private List<string> _TestData_2023_10_01_02 = new()
+        {
+            "..F7.",
+            ".FJ|.",
+            "SJ.L7",
+            "|F--J",
+            "LJ..."
         };
 
         private List<string> _TestData_2023_11 = new()
         {
-
+            "...#......",
+            ".......#..",
+            "#.........",
+            "..........",
+            "......#...",
+            ".#........",
+            ".........#",
+            "..........",
+            ".......#..",
+            "#...#....."
         };
 
         private List<string> _TestData_2023_12 = new()
