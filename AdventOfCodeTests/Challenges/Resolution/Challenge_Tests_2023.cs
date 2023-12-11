@@ -151,18 +151,18 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         [TestMethod(), TestCategory("2023"), TestCategory("Part1")]
         public void ResolveChallenge_2023_10_01_Test()
         {
-            Assert.Inconclusive();
             var challenge = new Challenge_2023_10_01();
-            var result = challenge.ResolveChallenge(_TestData_2023_10);
-
-            Assert.AreEqual("Not Implemented", result);
+            var result1 = challenge.ResolveChallenge(_TestData_2023_10_01_01);
+            Assert.AreEqual("4", result1);
+            var result2 = challenge.ResolveChallenge(_TestData_2023_10_01_02);
+            Assert.AreEqual("8", result2);
         }
         [TestMethod(), TestCategory("2023"), TestCategory("Part2")]
         public void ResolveChallenge_2023_10_02_Test()
         {
             Assert.Inconclusive();
             var challenge = new Challenge_2023_10_02();
-            var result = challenge.ResolveChallenge(_TestData_2023_10);
+            var result = challenge.ResolveChallenge(_TestData_2023_10_01_01);
 
             Assert.AreEqual("Not Implemented", result);
         }
