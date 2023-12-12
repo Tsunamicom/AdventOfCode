@@ -172,7 +172,12 @@ namespace AdventOfCode.Challenges.Resolution.Tests
 
         private List<string> _TestData_2023_12 = new()
         {
-
+            "???.### 1,1,3",
+            ".??..??...?##. 1,1,3",
+            "?#?#?#?#?#?#?#? 1,3,1,6",
+            "????.#...#... 4,1,1",
+            "????.######..#####. 1,6,5",
+            "?###???????? 3,2,1"
         };
 
         private List<string> _TestData_2023_13 = new()
