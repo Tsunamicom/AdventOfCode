@@ -162,7 +162,7 @@ namespace AdventOfCode.Challenges.Resolution.Tests
         {
             Assert.Inconclusive();
             var challenge = new Challenge_2023_10_02();
-            var result = challenge.ResolveChallenge(_TestData_2023_10_01_01);
+            var result = challenge.ResolveChallenge(_TestData_2023_10_01_02);
 
             Assert.AreEqual("Not Implemented", result);
         }
