@@ -224,10 +224,10 @@ namespace AdventOfCode.Challenges
 
         public readonly static Dictionary<string, IChallenge> Challenges2024 = new Dictionary<string, IChallenge>()
         {
-            { "2024-12-1-1", new Challenge(new LocalFileAccess(".\\Files\\2024\\Day01.txt"), new Challenge_2024_01_01()) },
-            { "2024-12-1-2", new Challenge(new LocalFileAccess(".\\Files\\2024\\Day01.txt"), new Challenge_2024_01_02()) },
-            //{ "2024-12-2-1", new Challenge(new LocalFileAccess(".\\Files\\2024\\Day02.txt"), new Challenge_2024_02_01()) },
-            //{ "2024-12-2-2", new Challenge(new LocalFileAccess(".\\Files\\2024\\Day02.txt"), new Challenge_2024_02_02()) },
+            //{ "2024-12-1-1", new Challenge(new LocalFileAccess(".\\Files\\2024\\Day01.txt"), new Challenge_2024_01_01()) },
+            //{ "2024-12-1-2", new Challenge(new LocalFileAccess(".\\Files\\2024\\Day01.txt"), new Challenge_2024_01_02()) },
+            { "2024-12-2-1", new Challenge(new LocalFileAccess(".\\Files\\2024\\Day02.txt"), new Challenge_2024_02_01()) },
+            { "2024-12-2-2", new Challenge(new LocalFileAccess(".\\Files\\2024\\Day02.txt"), new Challenge_2024_02_02()) },
             //{ "2024-12-3-1", new Challenge(new LocalFileAccess(".\\Files\\2024\\Day03.txt"), new Challenge_2024_03_01()) },
             //{ "2024-12-3-2", new Challenge(new LocalFileAccess(".\\Files\\2024\\Day03.txt"), new Challenge_2024_03_02()) },
             //{ "2024-12-4-1", new Challenge(new LocalFileAccess(".\\Files\\2024\\Day04.txt"), new Challenge_2024_04_01()) },
