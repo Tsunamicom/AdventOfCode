@@ -1,6 +1,6 @@
 ﻿cls
 $Script:Year = 2024
-$Script:BasePath = "C:\Users\Tsuna\source\repos\Tsunamicom\AdventOfCode\AdventOfCode\Scripts" # Update BasePath to where this script and template files are dropped
+$Script:BasePath = "." # Update BasePath to where this script and template files are dropped
 
 
 function CreateDirectory()
